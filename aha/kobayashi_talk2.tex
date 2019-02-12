@@ -1,0 +1,143 @@
+\documentclass{fkpresentation}
+
+% Information to be included in the title page:
+\title{\textmd{A ``Metaphorical'' Theorem}}
+\author{Forest Kobayashi}
+\institute{Harvey Mudd College}
+\date{February 11th, 2018}
+
+
+\usetheme{Dresden}
+\usecolortheme{crane}
+% Make the colors look halfway passable, at least for now.
+% \definecolor{lgray}{RGB}{230, 230, 230}
+% \definecolor{tgray}{RGB}{70, 70, 70}
+% \definecolor{mgold}{RGB}{238, 204, 119}
+% \mode<presentation> {
+% \usetheme{Dresden}
+% \setbeamercolor*{palette secondary}{use=structure,fg=tgray,bg=lgray}
+% \setbeamercolor*{palette tertiary}{use=structure,fg=lgray,bg=tgray}
+% \setbeamercolor*{normal text}{fg=darkgray}
+% \setbeamercolor*{frametitle}{fg=black}
+% \setbeamercolor*{title}{fg=black}
+% \setbeamerfont*{section in head/foot}{size=\scriptsize}
+% \setbeamerfont*{subsection in head/foot}{size=\scriptsize}
+% }
+% Partial differential
+\newcommand{\pdd}{\mathop{}\,\partial}
+
+% Total differential
+\newcommand{\dd}{\mathop{}\,\mathrm{d}}
+
+% Define partial derivative and ordinary derivative things
+\newcommand{\pd}[3][]{\frac{\partial^{#1}\hspace{-.08em} {#2}}{\partial {#3}^{#1}}}
+\newcommand{\od}[3][]{\frac{{d}^{#1}\hspace{-.08em} {#2}}{d {#3}^{#1}}}
+
+\usetikzlibrary{quotes,arrows.meta}
+\tikzset{
+  annotated cuboid/.pic={
+    \tikzset{%
+      every edge quotes/.append style={midway, auto},
+      /cuboid/.cd,
+      #1
+    }
+    \draw [every edge/.append style={pic actions, densely dashed, opacity=.5}, pic actions]
+    (0,0,0) coordinate (o) -- ++(-\cubescale*\cubex,0,0) coordinate (a) -- ++(0,-\cubescale*\cubey,0) coordinate (b) edge coordinate [pos=1] (g) ++(0,0,-\cubescale*\cubez)  -- ++(\cubescale*\cubex,0,0) coordinate (c) -- cycle
+    (o) -- ++(0,0,-\cubescale*\cubez) coordinate (d) -- ++(0,-\cubescale*\cubey,0) coordinate (e) edge (g) -- (c) -- cycle
+    (o) -- (a) -- ++(0,0,-\cubescale*\cubez) coordinate (f) edge (g) -- (d) -- cycle;
+    \path [every edge/.append style={pic actions, |-|}]
+    (b) +(0,-5pt) coordinate (b1) edge ["\cubex \cubeunits"'] (b1 -| c)
+    (b) +(-5pt,0) coordinate (b2) edge ["\cubey \cubeunits"] (b2 |- a)
+    (c) +(3.5pt,-3.5pt) coordinate (c2) edge ["\cubez \cubeunits"'] ([xshift=3.5pt,yshift=-3.5pt]e)
+    ;
+  },
+  /cuboid/.search also={/tikz},
+  /cuboid/.cd,
+  width/.store in=\cubex,
+  height/.store in=\cubey,
+  depth/.store in=\cubez,
+  units/.store in=\cubeunits,
+  scale/.store in=\cubescale,
+  width=10,
+  height=10,
+  depth=10,
+  units=cm,
+  scale=.1,
+}
+
+\usepackage[style=british]{csquotes}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip1em
+    \hbox{}\nobreak\hfill #1%
+    \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+{\savebox\mybox{#1}\begin{quote}\openautoquote\hspace*{-.7ex}}
+  {\unskip\closeautoquote\vspace*{1mm}\signed{\usebox\mybox}\end{quote}}
+
+
+\theoremstyle{plain}% default
+\newtheorem{proposition}[theorem]{Proposition}
+
+\begin{document}
+\frame{\titlepage}
+\section{Introduction}
+\begin{frame}{Today's talk}
+  \begin{itemize}
+    \item Prompt: ``focus your talk on a favorite mathematical idea or
+      theorem.'' \pause
+    \item Original presentation: interplay between visuals and algebra
+      \begin{itemize}
+        \item Technical
+        \item Not what I \emph{really} wanted to talk about\pause
+      \end{itemize}
+    \item Prompt, redux: ``A \emph{\color{red}personal} `Aha!' moment in
+      mathematics.''\pause
+      \begin{itemize}
+        \item Yeah, I can do that.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+\begin{frame}{Agenda:}
+  Today, we'll talk about perseverance. \pause
+  \begin{theorem}
+    Hard work pays off.
+  \end{theorem}
+\end{frame}
+
+\section{Setting the stage}
+\begin{frame}{Backstory}
+  \begin{itemize}
+    \item Middle school
+    \item High school
+      \begin{itemize}
+        \item Math: by \emph{far} my worst subject
+        \item Ms.\ Bender's Precalc class
+        \item 11\textsuperscript{th} grade --- almost kicked out of the honors
+          program
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Proof by Anecdote}
+
+\section{Conclusion}
+\begin{frame}{The general case:}
+  \vfill
+  \begin{theorem}
+    Hard work pays off.
+  \end{theorem}\pause
+  \begin{proof}
+    Left as an exercise.
+  \end{proof}
+  \vfill
+\end{frame}
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End
