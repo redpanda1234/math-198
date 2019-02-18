@@ -4,7 +4,7 @@
 \title{\textmd{Seeing is Believing}}
 \author{Forest Kobayashi}
 \institute{Harvey Mudd College}
-\date{February 11th, 2018}
+\date{February 18th, 2018}
 
 
 \usetheme{Dresden}
@@ -66,73 +66,55 @@
 \begin{document}
 \frame{\titlepage}
 \section{Introduction}
-\begin{frame}{A Motivating Quote}{}
-  \vfill\vspace{2em}
-  \begin{aquote}{Marie-Sophie Germain}
-    Algebra is but written geometry, and geometry is but figured algebra.
-  \end{aquote}
-  \vfill
-\end{frame}
-\begin{frame}{My perspective}
+
+\begin{frame}{High School}
   \begin{itemize}
-  \item My background in math\pause
+  \item Didn't like math
     \begin{itemize}
-      \item Weakest subject in high school (until Calculus)\pause
-      \item Little exposure to higher math\pause
-      \item Did like Physics, though!\pause
+      \item Focus on ``algebra''
+      \item Never felt I understood why things worked
     \end{itemize}
-  \item Former perspectives on ``Algebra'' \& Geometry\pause
-    \begin{itemize}
-    \item Algebra: abstract, opaque, uninspired\pause
-    \item Geometry: tangible, intuitive, clear\pause
-    \end{itemize}
-  \item Today: learning to convert between the two
   \end{itemize}
 \end{frame}
-\section{Warming up}
-\begin{frame}{A sum identity}{}
+\begin{frame}{Example}{}
   \begin{theorem}
     Let $n \in \mathbb{N}$. Then
     \[\small
-      \sum_{k=1}^n k = \pause \frac{n(n+1)}{2}
+      \sum_{k=1}^n k = \frac{n(n+1)}{2}
     \]
-  \end{theorem}\pause
-  \begin{proof}
-    Induct on $n$
+  \end{theorem}
+  \begin{proof}\pause
+    Induct on $n$.
     \[\small
-      \frac{n(n+1)}{2} + (n+1) = \frac{(n^2 + n) + (2n+2)}{2} = \frac{(n+1)(n+2)}{2}.
+      \frac{k(k+1)}{2} + (k+1) = \frac{(k^2 + k) + (2k+2)}{2} = \frac{(k+1)(k+2)}{2}.
     \]
   \end{proof}
 \end{frame}
-\begin{frame}{Evolution of perspective}{}
+% \begin{frame}{Question left una}
+%   \begin{itemize}
+%     \item Why should I \emph{expect} the formula to look like this?
+%   \end{itemize}
+% \end{frame}
+\begin{frame}{The question}
+  \vfill
+  \begin{center}\Large
+    Why should I \emph{expect} the formula to look like this?
+  \end{center}
+  \vfill
+\end{frame}
+\begin{frame}{Coming to college}
   \begin{itemize}
-    \item High School:
+    \item Forgot about the question for a while
+    \item Transitioned to focusing on justifying an answer over
+      ``understanding'' it (not a negative thing)
+    \item Learned to love rigor and proof \texttt{:)}
+    \item Wanted to share this!
       \begin{itemize}
-        \item Didn't get induction
-      \end{itemize}
-    \item Frosh year:
-      \begin{itemize}
-        \item Finally got induction
-        \item Finally enjoyed math!
-        \item Wished somebody had told me math was so cool!
-      \end{itemize}
-    \item Plan: write intuitive explanations
-      \begin{itemize}
-        \item Some problems\ldots
-        \item Can I do it without words?
+        \item Only problem: wasn't sure what had changed
       \end{itemize}
   \end{itemize}
 \end{frame}
-% \begin{frame}{Unsatisfying!}{}
-%   \begin{itemize}
-%     \item What was I missing?
-%       \begin{itemize}
-%         \item Induction
-%       \end{itemize}
-%     \item Trusting vs.\ believing a result
-%   \end{itemize}
-% \end{frame}
-
+\section{Warming up}
 \begin{frame}{Drawing a picture}{}
   Partial sums
   \begin{figure}[H]
@@ -252,7 +234,7 @@
             \ifnum\pgfmathresult=1
             \pgfmathparse{(\y) > 1.001 ? int(1) : int(0)}
             \ifnum\pgfmathresult=1
-          p  \node at (\newx-.5,\y-1) {$+$};
+            \node at (\newx-.5,\y-1) {$+$};
             \fi
             \fi
             \ifthenelse{\y=0}
@@ -283,7 +265,7 @@
     \end{tikzpicture}
   \end{figure}
 \end{frame}
-\begin{frame}
+\begin{frame}{Calculating the shaded area}
   \vfill
   \begin{figure}[H]
     \centering
@@ -330,7 +312,8 @@
 \begin{frame}{Challenge}
   \vfill
   \begin{aquote}{My Neighbor}
-    Can you do it with Calculus? Because \textbf{then} I'd be impressed.
+    Ok, that's pretty cool. But can you do it with Calculus? Because then I'd be
+    \textbf{really} impressed.
   \end{aquote}
   \vfill
 \end{frame}
@@ -408,67 +391,39 @@
       \draw[every edge/.append style={draw=blue, densely dotted, opacity=.5}]
       (jp) edge ++(0,\dx,0);
 
-      \coordinate (ap) at (-\cubex, 0, 0);
-
-      \draw[draw=blue, every edge/.append style={draw=blue, densely dashed, opacity=.5}, fill=green, fill opacity=.5]
-      (ap)
-      -- ++(0,0,\dx) coordinate (l)
-      -- ++(\cubex, 0, 0) coordinate (m)
-      -- ++(0,-\cubex,0) coordinate (n)
-      -- ++(-\cubex, 0, 0) coordinate (p)
-      -- (l) -- cycle;
-
-      \draw[draw=blue, every edge/.append style={draw=blue}, fill=green, fill opacity=.5]
-      (n)
-      -- ++(0,0,-\dx) coordinate (np) -- ++(0,\cubex, 0) -- ++(-\cubex,0,0) -- ++(0,0,\dx) -- ++(\cubex, 0,0) edge ++(0,0,-\dx) -- ++(0,-\cubex,0);
-
-      \coordinate (opp) at (0,0,0);
-
-      \draw[draw=blue, every edge/.append style={draw=blue, densely dashed, opacity=.5}, fill=green, fill opacity=.5]
-      (opp)
-      -- ++(\dx,0,0) coordinate (q)
-      -- ++(0, 0, -\cubex) coordinate (r)
-      -- ++(0,-\cubex,0) coordinate (s)
-      -- ++(0, 0, \cubex) coordinate (t)
-      -- (q) -- cycle;
-
-      \draw[draw=blue, every edge/.append style={draw=blue}, fill=green, fill opacity=.5]
-      (t)
-      -- ++(-\dx,0,0) coordinate (np) -- ++(0,\cubex, 0) -- ++(0,0,-\cubex) -- ++(\dx,0,0) -- ++(0, 0,\cubex) edge ++(0,0,-\dx) -- ++(0,-\cubex,0);
-
-      \draw[draw=blue, densely dotted, opacity=.5] (s) -- ++(-\dx,0,0);
-
-      % \draw[draw=blue] ()
-
-      % \draw[every edge/.append style={draw=blue, densely dotted, opacity=.5}]
-      % (jp) edge ++(0,\dx,0);
-
-      % \draw[draw=yellow, every edge/.append style={draw=blue, densely dashed, opacity=.5}, fill=green, fill opacity=.5]
-      % (a)
-      % -- ++(-\dx,0,0) coordinate (l)
-      % -- ++(0, 0, -\cubez) coordinate (m)
-      % -- ++(0, -\cubey, 0) coordinate (n)
-      % -- ++(0, 0, \cubez) coordinate (p)
-      % -- (l)
-      % -- cycle;
-      % \draw[draw=yellow, every edge/.append style={draw=}]
-      % \path [every edge/.append style={draw=blue, |-|}]
-      % (b) +(0,-5pt) coordinate (b1) edge ["$x$"'] (b1 -| c)
-      % (b) +(-12pt,0) coordinate (b2) edge ["$x$"] (b2 |- l)
-      % (c) +(3.5pt,-3.5pt) coordinate (c2) edge ["$x$"'] ([xshift=3.5pt,yshift=-3.5pt]e);
+      \path [every edge/.append style={draw=blue, |-|}]
+      (b) +(0,-5pt) coordinate (b1) edge ["$x$"'] (b1 -| c)
+      (b) +(-5pt,0) coordinate (b2) edge ["$x$"] (b2 |- a)
+      (c) +(3.5pt,-3.5pt) coordinate (c2) edge ["$x$"'] ([xshift=3.5pt,yshift=-3.5pt]e);
+      \path [every edge/.append style={draw=blue, |-|}]
+      (i) +(-5pt,-.025) coordinate (i1) edge ["$dx$"'] ++(-5pt,-.275)% (i1 -| a)
+      ;
     \end{tikzpicture}
-    \caption{Cubes}
+    \caption{Extending one side by $dx$}
   \end{figure}
 \end{frame}
-
-
+\begin{frame}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[keepaspectratio,width=.5\linewidth]{eek.png}
+    \caption{3blue1brown's visualization (\cite{3b1b})}
+  \end{figure}
+\end{frame}
+\begin{frame}{A final quote}{}
+  \vfill\vspace{2em}
+  \begin{aquote}{Marie-Sophie Germain}
+    Algebra is but written geometry, and geometry is but figured algebra.
+  \end{aquote}
+  \vfill
+\end{frame}
 
 
 \section{Bibliography}
 \begin{frame}
   \frametitle{References}
+  \bibliographystyle{alpha}
   % \bibliographystyle{IEEE}
-  % \bibliography{bibfile.bib}
+  \bibliography{aha.bib}
 \end{frame}
 
 \end{document}
