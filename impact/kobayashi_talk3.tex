@@ -1,0 +1,64 @@
+\documentclass{fkpresentation}
+
+% Information to be included in the title page:
+\title{\textmd{}}
+\author{Forest Kobayashi}
+\institute{Harvey Mudd College}
+\date{February 24th, 2018}
+
+\usepackage[style=british]{csquotes}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip1em
+    \hbox{}\nobreak\hfill #1%
+    \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+{\savebox\mybox{#1}\begin{quote}\openautoquote\hspace*{-.7ex}}
+  {\unskip\closeautoquote\vspace*{1mm}\signed{\usebox\mybox}\end{quote}}
+
+
+\begin{document}
+\frame{\titlepage}
+\section{Introduction}
+\begin{frame}{A quote}
+  \vfill
+  \begin{aquote}{Various}
+    Here's to pure mathematics---may it never be of any use to anybody.
+  \end{aquote}
+  \vfill
+\end{frame}
+\begin{frame}{The paradox}
+  \begin{itemize}
+    \item Aliquam erat volutpat.  Nunc eleifend leo vitae magna.
+      \begin{itemize}
+        \item In id erat non orci commodo lobortis.
+        \item Proin neque massa, cursus ut, gravida ut, lobortis eget, lacus.
+          \begin{itemize}
+            \item Sed diam.
+            \item Praesent fermentum tempor tellus.
+          \end{itemize}
+      \end{itemize}
+    \item Nullam tempus. Mauris ac felis vel velit tristique imperdiet.
+      \begin{itemize}
+      \item Donec at pede.
+      \item Etiam vel neque nec dui dignissim bibendum.
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Bibliography}
+\begin{frame}
+  \frametitle{References}
+  \bibliographystyle{alpha}
+  % \bibliographystyle{IEEE}
+  \bibliography{aha.bib}
+\end{frame}
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End

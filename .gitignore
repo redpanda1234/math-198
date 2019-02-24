@@ -4,6 +4,8 @@
 *.fls
 *.pre
 *.out
+*.nav
+*.snm
 *.synctex.gz
 *.fdb_latexmk
 auto/

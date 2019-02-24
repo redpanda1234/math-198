@@ -1,0 +1,42 @@
+Hello everyone!
+
+Similarly to...everyone else, today I'd like to talk to you about one of my big
+aha moments in mathematics. Now, as you might be able to infer from the title,
+this is going to involve visualizations of some flavor, and possibly some
+geometric reasoning. I'm a particularly visual person, and (while I know visual
+intuition can be _misleading_ sometimes), I think that can also be quite
+powerful. As the say, a picture is worth a thousand words. So, let's jump right
+into it.
+
+Here's a relatively straightforward sum identity. I think that some people
+proved this in Math 55, or maybe in Math 30. Does anyone have an idea for how to
+do it?
+
+That's right --- induction. You induct on n, add k+1 to both sides, and show
+that it has the desired form. Bingo bongo, bob's your uncle, back at the ranch
+it's gin o'clock.
+
+But now let me ask you another question (please don't answer this one because
+then you'd ruin the buildup for the rest of the audience) --- what does this
+_mean_ ? Or, more succinctly,
+
+Why should you expect the formula to look like this?
+
+When I first encountered this identity in junior year of high school, this was
+the question I wrestled with. Ultimately, indution just really wasn't doing it
+for me. Now, that could be because I just fundamentally didn't understand how
+induction actually _works_, but that wasn't the only problem. Really, I was
+wrestling with something many of us are familiar with, which is the dichotomy
+between _proof_ of a result and _understanding_ a result. Here, proof allowed me
+to trust that the identity held and was correct, but it didn't inform me as to
+_why_ it was correct.
+
+Yet, every teacher I asked about it simply referred me back to the same
+inductive proof I'd seen before.
+
+
+
+
+These things were big realizations for me, because it was
+one of the first times I felt I had come up with an idea for how to think about
+something on my own. Without further ado, let's get right into it.

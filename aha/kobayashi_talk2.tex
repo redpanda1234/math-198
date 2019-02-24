@@ -67,54 +67,57 @@
 \frame{\titlepage}
 \section{Introduction}
 
-\begin{frame}{High School}
-  \begin{itemize}
-  \item Didn't like math
-    \begin{itemize}
-      \item Focus on ``algebra''
-      \item Never felt I understood why things worked
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-\begin{frame}{Example}{}
+\begin{frame}{A sum identity}{}
   \begin{theorem}
     Let $n \in \mathbb{N}$. Then
     \[\small
       \sum_{k=1}^n k = \frac{n(n+1)}{2}
     \]
-  \end{theorem}
-  \begin{proof}\pause
+  \end{theorem}\pause
+  \begin{proof}
     Induct on $n$.
     \[\small
       \frac{k(k+1)}{2} + (k+1) = \frac{(k^2 + k) + (2k+2)}{2} = \frac{(k+1)(k+2)}{2}.
     \]
   \end{proof}
 \end{frame}
-% \begin{frame}{Question left una}
-%   \begin{itemize}
-%     \item Why should I \emph{expect} the formula to look like this?
-%   \end{itemize}
-% \end{frame}
 \begin{frame}{The question}
   \vfill
-  \begin{center}\Large
-    Why should I \emph{expect} the formula to look like this?
+  \begin{center}\large
+    Why should you expect the formula to look like this?
   \end{center}
   \vfill
 \end{frame}
-\begin{frame}{Coming to college}
+\begin{frame}{Consternation }
   \begin{itemize}
-    \item Forgot about the question for a while
-    \item Transitioned to focusing on justifying an answer over
-      ``understanding'' it (not a negative thing)
-    \item Learned to love rigor and proof \texttt{:)}
-    \item Wanted to share this!
+    \item Bothered me a lot in high school
       \begin{itemize}
-        \item Only problem: wasn't sure what had changed
+        \item Teachers: ``because the induction works''
+        \item Eventually gave up on a deeper perspective
       \end{itemize}
+    \item College
+      \begin{itemize}
+        \item Didn't question the inductive proof
+      \end{itemize}
+    \item Winter break
   \end{itemize}
 \end{frame}
+\begin{frame}{The challenge}
+  \vfill
+  \begin{aquote}{My Neighbor}
+    I think that I just don't work well in abstraction. I care about the
+    tangible, and things that I can \emph{see}.
+  \end{aquote}
+  \vfill
+\end{frame}
 \section{Warming up}
+\begin{frame}{Desired explanation}
+  \begin{itemize}
+    \item Brief
+    \item Accessible % to a non-technical audience, and
+    \item Visualizable
+  \end{itemize}
+\end{frame}
 \begin{frame}{Drawing a picture}{}
   Partial sums
   \begin{figure}[H]
@@ -210,7 +213,7 @@
     \end{tikzpicture}
   \end{figure}
 \end{frame}
-\begin{frame}{Continuing}{}
+\begin{frame}{Continuing}
   \begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=.67]
@@ -313,7 +316,8 @@
   \vfill
   \begin{aquote}{My Neighbor}
     Ok, that's pretty cool. But can you do it with Calculus? Because then I'd be
-    \textbf{really} impressed.
+    \textbf{really} impressed. I didn't understand \textbf{any} of Calculus, and
+    I mean it.
   \end{aquote}
   \vfill
 \end{frame}
@@ -330,7 +334,7 @@
     (x-y)(x^{n-1} + x^{n-2}y + \cdots + y^{n-1})$
   \end{proof}
 \end{frame}
-\begin{frame}{Special case: $n=3$}{}
+\begin{frame}{Special case: $n=3$}
   \begin{figure}[H]
     \centering
     \begin{tikzpicture}[every edge quotes/.append style={auto, text=blue}]
