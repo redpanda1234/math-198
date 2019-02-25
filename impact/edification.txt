@@ -49,7 +49,7 @@ Moving forward
 + "Freedom is nothing but a chance to be better." -Albert Camus
   - The impact I want to have: understand the problem, and fight back against
     it.
-  - My position: fight against the negative experiences that _I_ know.
+  - My position: fight against the experiences that I know.
 
 + Challenges
   - It's multifaceted
@@ -82,3 +82,4 @@ Moving forward
   - Autonomous process of learning
 
 + Conclusion:
+  - The long haul, vs. the short one
