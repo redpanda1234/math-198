@@ -1,39 +1,97 @@
-So, as some of you might know, I am a math major. Not a math-CS major, not a
-math-physics major --- just a plain, honest-to-goodness math major. If I had to
-categorize myself further, I'd say I consider my interests to lie in _pure_ math
-rather than applied math, but the particular labeling is not terribly important:
-the idea is mainly that I'm just not generally interested in real-world
-problems. This begs a question: how, then, can I possibly have an impact on
-society?
+Hello everybody. Today I'd like to talk to you about the impact I hope to have
+on society. This is something very important and personal to me, and I'm really
+happy to be getting a chance to talk about it today. Let's hope I do it justice.
 
-There's a famous quote in this vein, sometimes attributed to Henry John Stephen
-Smith, but not reliably recorded anywhere: "Here's to pure mathematics --- may
-it never be of any use to anybody."
+Anyways, let's get right into it. I'd like to begin by addressing the elephant
+in the room:
 
 *  NEXT SLIDE  *
 
-This reflects a belief I feel I encounter frequently when talking with people
-about math. Namely that Math is "useless," and somehow, this is something to be
-celebrated.
+As some of you might know, I am a math major. Not a math-CS major, not a
+math-physics major --- just a plain, honest-to-goodness math major. In
+particular, my interests lie in _pure_ math, not applied math. Generally
+speaking, I'm not very interested in real-world problems. This raises a
+question: how, then, can I hope hope to have an impact on society, if pure math
+is "never of any use to anybody?"
 
 * SLIGHT PAUSE *
 *  NEXT SLIDE  *
 
-I want to push back on this. Math can't _really_ be "useless," or else nobody
-would bother to study it. The mistake is in thinking that utility comes only
-from having real-world applications.
+Well, simply put, I just I don't think pure math _is_ of no use to anybody. The
+quote presents a false dichotomy: namely, that in order to have societal
+utility, a thing has to have real-world applications. But there are plenty of
+counterexamples here. For instance, it's hard to suggest that Literature, Music,
+or the Arts have any "real-world applications," and yet we don't think of them
+as "useless," because they contribute positively to the human experience. I
+believe math can do the same.
 
-// Feeds the basal desire to know
-// Like art, gives perspective (?)
-// Community!
+*  NEXT SLIDE  *
 
-// Hmmmm
-//
-// But this can't be true, or else music and the arts could be said to have no
-// value. So it is with math.
+At its best, it affords many things that people love. Cool ideas to puzzle over,
+different ways of seeing the world, and involvement in a vibrant community. The
+issue is that most people never get a chance to interact with math in this way.
 
-// yikes remove this
-//
-// But there are plenty of pursuits we value that lack such affects. Why else
-// study poetry? Why erect museums to house great works of art? Real-world
-// concerns never enter the mind there. So too it is with math.
+*  NEXT SLIDE  *
+
+Access to "higher math" is gated in many subtle ways by facets of class and
+privilege. There are many problems here, but I'll just focus on two big ones:
+the accessibility of good materials, and the prevalence of "traumatic"
+experiences in math education.
+
+  + The first is fairly self-explanatory: although resources like KhanAcademy,
+    Wikipedia, and 3Blue1Brown are making free, high-quality math information
+    more accessible day by day, there's still a long way to go before they can
+    achieve parity with a well-taught brick-and-mortar class. This
+    systematically disadvantages students who lack exposure such resources.
+
+  + Second, for many people, math classes are traumatic. I'm always shocked at
+    how consistently people say things like "I was always terrible at math" when
+    I tell them what I study. This is a horrifying pathology of our education
+    system: I can think of no other subject that, upon just being _mentioned_
+    causes people such intense feelings of panic and shame.
+
+    In my personal experience, this has a lot to do with how classes and
+    teachers define success. I don't usually talk about this, but in high
+    school, math was actually my worst subject (by _far_). I particularly
+    remember a PreCalc test where, despite studying for _hours_ and _hours_, I
+    scored just a 54%. When I got my exam back, I went to my teacher's office
+    after school and asked her for help. I told her I thought I understood
+    things in class, but just couldn't perform on our tests. Eventually, she got
+    impatient and snapped at me, saying this
+
+*  NEXT SLIDE  *
+
+    Hearing that as a student was absolutely devestating. I remember just how
+    _factual_ it felt. It wasn't personal --- I simply wasn't good at math. The
+    tests showed that. My teacher, who had seen hundreds of students before me,
+    told me that. How could I possibly know better than she did? Why should I
+    believe in myself over her?
+
+  + I'm going to gloss over a lot details that aren't directly relevant for my
+    talk, but the gist is that I was given a big second change, and eventually
+    improved. But to this day, I'm shocked by how easy it would have been for
+    things to go differently. As an asian-american male, toxic stereotypes
+    actually worked in my favor here, asserting that I really _should_ be be
+    good at math. What if I were not from a privileged group, and instead had to
+    push past barriers of identity as well? How many potentially excited
+    students does our field lose each year because of this?
+
+  + It's hard to say for sure. But one need only glance at demographic
+    information for mathematicians at the undergraduate, graduate, and
+    postdoctoral levels to see that they become increasingly skewed towards
+    white and asian men at every step.
+
+*  NEXT SLIDE  *
+
+  + So: where do I go from here? As I said before, I think that my privileges
+    were instrumental in moving past what my teacher said. I was lucky in many,
+    many ways. And this upsets me. I hate the idea of serendipity playing such a
+    large role in who gets a chance to learn. This is what I want to change.
+    This is what I feel I've been given a chance to fight. I want to be an
+    educator. And I want to be better.
+
+  + Of course, this is a hugely complex issue. There are deep societal
+    undercurrents here that require supra-institutional organization to combat.
+    But on a local scale, teachers have the biggest opportunity to effect
+    change. They have the power not only to shape _what_ people think, but _how_
+    they think as well.
