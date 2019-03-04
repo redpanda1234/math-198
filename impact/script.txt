@@ -17,13 +17,13 @@ is "never of any use to anybody?"
 * SLIGHT PAUSE *
 *  NEXT SLIDE  *
 
-Well, simply put, I just I don't think pure math _is_ of no use to anybody. The
-quote presents a false dichotomy: namely, that in order to have societal
-utility, a thing has to have real-world applications. But there are plenty of
-counterexamples here. For instance, it's hard to suggest that Literature, Music,
-or the Arts have any "real-world applications," and yet we don't think of them
-as "useless," because they contribute positively to the human experience. I
-believe math can do the same.
+Well, I just...don't think it's true that pure math has no use. If that were teh
+case, nobody would study it. The quote presents a false dichotomy: namely, that
+in order to have societal utility, a thing has to have real-world applications.
+But there are plenty of counterexamples here. For instance, it's hard to suggest
+that Literature, Music, or the Arts have any "real-world applications," and yet
+we don't think of them as "useless," because they contribute positively to the
+human experience. I believe math has the potential to do the same.
 
 *  NEXT SLIDE  *
 
@@ -41,8 +41,10 @@ experiences in math education.
   + The first is fairly self-explanatory: although resources like KhanAcademy,
     Wikipedia, and 3Blue1Brown are making free, high-quality math information
     more accessible day by day, there's still a long way to go before they can
-    achieve parity with a well-taught brick-and-mortar class. This
-    systematically disadvantages students who lack exposure such resources.
+    achieve parity with a well-taught brick-and-mortar class. And as-of-yet,
+    outreach leaves something to be desired as well. This systematically
+    disadvantages students who lack exposure to high-quality classroom
+    environments, etc.
 
   + Second, for many people, math classes are traumatic. I'm always shocked at
     how consistently people say things like "I was always terrible at math" when
@@ -51,15 +53,25 @@ experiences in math education.
     causes people such intense feelings of panic and shame.
 
     In my personal experience, this has a lot to do with how classes and
-    teachers define success. I don't usually talk about this, but in high
-    school, math was actually my worst subject (by _far_). I particularly
-    remember a PreCalc test where, despite studying for _hours_ and _hours_, I
-    scored just a 54%. When I got my exam back, I went to my teacher's office
-    after school and asked her for help. I told her I thought I understood
-    things in class, but just couldn't perform on our tests. Eventually, she got
-    impatient and snapped at me, saying this
+    teachers define success, and relate those ideas to their students.
+
+    I don't usually talk about this, but in high school, math was actually my
+    worst subject (by _far_). I particularly remember a PreCalc test where,
+    despite studying for _hours_ and _hours_, I scored just a 54%. When I got my
+    exam back, I went to my teacher's office after school and asked her for
+    help. I told her I thought I understood things in class, but just couldn't
+    perform on our tests. Eventually, she got impatient and snapped at me,
+    saying this
 
 *  NEXT SLIDE  *
+
+    "Honestly Forest, I think your biggest problem is that you're just not as
+    smart as you think you are. And the sooner you learn to accept that, and
+    stop trying to change it, the better for all of us."
+
+*  NEXT SLIDE  *
+
+    She then recommended that I be dropped from the Honors program.
 
     Hearing that as a student was absolutely devestating. I remember just how
     _factual_ it felt. It wasn't personal --- I simply wasn't good at math. The
@@ -68,30 +80,70 @@ experiences in math education.
     believe in myself over her?
 
   + I'm going to gloss over a lot details that aren't directly relevant for my
-    talk, but the gist is that I was given a big second change, and eventually
+    talk, but the gist is that I was given one last chance, and eventually
     improved. But to this day, I'm shocked by how easy it would have been for
-    things to go differently. As an asian-american male, toxic stereotypes
-    actually worked in my favor here, asserting that I really _should_ be be
-    good at math. What if I were not from a privileged group, and instead had to
-    push past barriers of identity as well? How many potentially excited
-    students does our field lose each year because of this?
+    things to go differently. For example, as an asian-american male, I didn't
+    have to fight against the additional barrier of implicit racial stereotypes.
+    In fact, they actuall worked in my favor here, asserting that I really
+    _should_ be be good at math. What if I were not from such a privileged
+    group? What if I hadn't been _lucky_?
 
-  + It's hard to say for sure. But one need only glance at demographic
-    information for mathematicians at the undergraduate, graduate, and
-    postdoctoral levels to see that they become increasingly skewed towards
+    How many potentially excited students does our field lose each year because
+    of things like this? It's hard to say for sure. But one need only glance at
+    demographic information for mathematicians at the undergraduate, graduate,
+    and postdoctoral levels to see that they become increasingly skewed towards
     white and asian men at every step.
+
+  + So: where do we go from here?
 
 *  NEXT SLIDE  *
 
-  + So: where do I go from here? As I said before, I think that my privileges
-    were instrumental in moving past what my teacher said. I was lucky in many,
-    many ways. And this upsets me. I hate the idea of serendipity playing such a
-    large role in who gets a chance to learn. This is what I want to change.
-    This is what I feel I've been given a chance to fight. I want to be an
-    educator. And I want to be better.
+  + As I've said before, I feel that I was lucky in many, many ways, and that
+    this is what allowed me to start moving forward from these events.
 
-  + Of course, this is a hugely complex issue. There are deep societal
-    undercurrents here that require supra-institutional organization to combat.
-    But on a local scale, teachers have the biggest opportunity to effect
-    change. They have the power not only to shape _what_ people think, but _how_
-    they think as well.
+    This upsets me. I hate the idea of serendipity playing such a large role in
+    who gets a chance to _learn_ --- in who gets to see the concepts that make
+    them want to know more. This is what I want to change. Leaving my PreCalc
+    class, I knew two things with certainty:
+
+    (1) I want to become an educator. I want to be able to show people _why_
+        they should be excited about math. I want people to feel the novelty of
+        pulling new perspective from it. I want to help them pursue the ideas
+        that bring them joy.
+
+    (2) In that role, I _will_ be better. I will work hard to make materials
+        more widely accessible to _everybody_, independent of race, gender,
+        sexuality, and anything else. And I will never treat a struggling
+        student with disdain.
+
+*  NEXT SLIDE  *
+
+  + Of course, things are easier said than done. These are hugely complex
+    issues, often subject to powerful societal undercurrents that require
+    supra-institutional action to combat. But locally speaking, teachers can
+    still make a big difference. They have one of the few jobs that offers an
+    opportunity to affect not just _what_ people think, but _how_. This is an
+    awesome power.
+
+  + Lest this remain an abstract call to action, I'd like to remind all of you
+    that calling someone a "teacher" does not need to mean it is their
+    _occupation_ to teach. As Harvey Mudd students, we have knowledge of
+    important technical subjects that the majority of people will never get an
+    opportunity to engage with. But that can be changed. By carrying this
+    knowledge, each of us has an opportunity to try and disseminate it --- or at
+    the very least, tell people that it exists.
+
+*  NEXT SLIDE  *
+
+I'll leave you with one last quote today:
+
+  "If you want to build a ship, don't drum up the men to gather wood, divide the
+  work, and give orders. Instead, teach them to yearn for the vast and endless
+  sea."
+
+Many of us will find ourselves oneday in a position that offers a chance for
+edification. Whatever level it is --- grading, TAing, even lecturing --- we
+should remember that there's always two facets to teaching: (1) showing students
+how to build a boat, and (2) giving them the guts to go to sea.
+
+Don't forget the second.
