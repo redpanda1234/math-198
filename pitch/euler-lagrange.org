@@ -1,0 +1,4 @@
+* Outline for the talk
+** Euler-Lagrange equation: a really cool tool for extremizing functionals
+** Functional = a function eating a vector as its argument
+** wah

@@ -8,6 +8,10 @@
 *.snm
 *.bbl
 *.blg
+*.md5
+*.dvi
+*.dpth
+*.auxlock
 *.synctex.gz
 *.fdb_latexmk
-auto/
+**/auto/

@@ -17,13 +17,13 @@ is "never of any use to anybody?"
 * SLIGHT PAUSE *
 *  NEXT SLIDE  *
 
-Well, I just...don't think it's true that pure math has no use. If that were teh
-case, nobody would study it. The quote presents a false dichotomy: namely, that
-in order to have societal utility, a thing has to have real-world applications.
-But there are plenty of counterexamples here. For instance, it's hard to suggest
-that Literature, Music, or the Arts have any "real-world applications," and yet
-we don't think of them as "useless," because they contribute positively to the
-human experience. I believe math has the potential to do the same.
+Well, I just...don't think that's really true. The quote presents a false
+dichotomy: namely, that in order to have societal utility, a thing has to have
+real-world applications. But there are plenty of counterexamples here. For
+instance, it's hard to suggest that Literature, Music, or the Arts have any
+"real-world applications," and yet we don't think of them as "useless," because
+they contribute positively to the human experience. I believe math has the
+potential to do the same.
 
 *  NEXT SLIDE  *
 
@@ -103,8 +103,18 @@ experiences in math education.
 
     This upsets me. I hate the idea of serendipity playing such a large role in
     who gets a chance to _learn_ --- in who gets to see the concepts that make
-    them want to know more. This is what I want to change. Leaving my PreCalc
-    class, I knew two things with certainty:
+    them want to know more. This is what I want to change.
+
+*  NEXT SLIDE  *
+
+  + Of course, things are easier said than done. These are hugely complex
+    issues, often subject to powerful societal undercurrents that require
+    supra-institutional action to combat. But locally speaking, teachers can
+    still make a big difference. They have one of the few jobs that offers an
+    opportunity to affect not just _what_ people think, but _how_. This is an
+    awesome power.
+
+  Hence, leaving my PreCalc class, I knew two things with certainty:
 
     (1) I want to become an educator. I want to be able to show people _why_
         they should be excited about math. I want people to feel the novelty of
@@ -116,15 +126,6 @@ experiences in math education.
         sexuality, and anything else. And I will never treat a struggling
         student with disdain.
 
-*  NEXT SLIDE  *
-
-  + Of course, things are easier said than done. These are hugely complex
-    issues, often subject to powerful societal undercurrents that require
-    supra-institutional action to combat. But locally speaking, teachers can
-    still make a big difference. They have one of the few jobs that offers an
-    opportunity to affect not just _what_ people think, but _how_. This is an
-    awesome power.
-
   + Lest this remain an abstract call to action, I'd like to remind all of you
     that calling someone a "teacher" does not need to mean it is their
     _occupation_ to teach. As Harvey Mudd students, we have knowledge of
@@ -132,6 +133,8 @@ experiences in math education.
     opportunity to engage with. But that can be changed. By carrying this
     knowledge, each of us has an opportunity to try and disseminate it --- or at
     the very least, tell people that it exists.
+
+
 
 *  NEXT SLIDE  *
 
