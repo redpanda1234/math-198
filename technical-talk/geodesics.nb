@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17831,        470]
-NotebookOptionsPosition[     17517,        456]
-NotebookOutlinePosition[     17875,        472]
-CellTagsIndexPosition[     17832,        469]
+NotebookDataLength[     26884,        683]
+NotebookOptionsPosition[     26475,        668]
+NotebookOutlinePosition[     26834,        684]
+CellTagsIndexPosition[     26791,        681]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -23,6 +23,9 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<VariationalMethods`\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"r", "=", "3"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -72,6 +75,104 @@ Cell[BoxData[{
                 RowBox[{"5", " ", 
                  SuperscriptBox["v", "5"]}]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
        ")"}], "/", "3"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"onlyZ", "[", 
+     RowBox[{"u_", ",", "v_"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "u"}], " ", 
+          RowBox[{"(", 
+           RowBox[{"2", "+", "u"}], ")"}]}], "-", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"1", "+", "v"}], ")"}], "2"]}]], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"3", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2", " ", "u"}]], " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"-", "1"}], "+", "u"}], ")"}], "2"]}], "+", 
+         RowBox[{
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2", " ", "v"}]], " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", "1"}], "-", 
+            RowBox[{"2", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"1", "+", 
+               RowBox[{"2", " ", "u"}]}]], " ", 
+             RowBox[{"(", 
+              RowBox[{"u", "-", 
+               RowBox[{"5", " ", 
+                SuperscriptBox["u", "3"]}], "+", 
+               RowBox[{"5", " ", 
+                SuperscriptBox["v", "5"]}]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
+      ")"}], "/", "3"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"testZGrad", "[", 
+     RowBox[{"u_", ",", "v_"}], "]"}], "=", 
+    RowBox[{"Grad", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Function", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"u", ",", "v"}], "}"}], ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["\[ExponentialE]", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", "u"}], " ", 
+               RowBox[{"(", 
+                RowBox[{"2", "+", "u"}], ")"}]}], "-", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{"1", "+", "v"}], ")"}], "2"]}]], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"3", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"2", " ", "u"}]], " ", 
+               SuperscriptBox[
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"-", "1"}], "+", "u"}], ")"}], "2"]}], "+", 
+              RowBox[{
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"2", " ", "v"}]], " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"-", "1"}], "-", 
+                 RowBox[{"2", " ", 
+                  SuperscriptBox["\[ExponentialE]", 
+                   RowBox[{"1", "+", 
+                    RowBox[{"2", " ", "u"}]}]], " ", 
+                  RowBox[{"(", 
+                   RowBox[{"u", "-", 
+                    RowBox[{"5", " ", 
+                    SuperscriptBox["u", "3"]}], "+", 
+                    RowBox[{"5", " ", 
+                    SuperscriptBox["v", "5"]}]}], ")"}]}]}], ")"}]}]}], 
+             ")"}]}], ")"}], "/", "3"}]}], "]"}], "[", 
+       RowBox[{"u", ",", "v"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"u", ",", "v"}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"torus", "[", 
@@ -131,11 +232,7 @@ Cell[BoxData[{
       RowBox[{"u", "*", 
        RowBox[{"Sin", "[", 
         RowBox[{".5", "*", "v"}], "]"}]}]}], "}"}]}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"Needs", "[", "\"\<VariationalMethods`\>\"", "]"}], ";"}], 
-  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{"Clear", "[", "geodesicFindMin", "]"}], "\n", 
  RowBox[{
   RowBox[{
@@ -156,6 +253,9 @@ Cell[BoxData[{
          "interpolations", ",", "len", ",", "\[IndentingNewLine]", 
         "solution"}], "\[IndentingNewLine]", "}"}], ",", 
       "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"Direction", " ", "to", " ", "solve", " ", "in"}], " ", "*)"}],
+       "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"direction", "=", 
         RowBox[{"p2", "-", "p1"}]}], ";", "\[IndentingNewLine]", 
@@ -366,62 +466,148 @@ Cell[BoxData[{
            RowBox[{"f", "[", 
             RowBox[{"pts", "[", 
              RowBox[{"[", "2", "]"}], "]"}], "]"}], "]"}]}], "}"}], "]"}]}], 
-      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-      "\[IndentingNewLine]", 
-      RowBox[{"Show", "[", 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "\"\<Ok we got to the if check\>\"", "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
        RowBox[{
-       "basePlot", ",", " ", "geoPlot", ",", "p", ",", "q", ",", 
-        "\[IndentingNewLine]", 
-        RowBox[{"Boxed", "\[Rule]", "False"}], ",", " ", 
-        RowBox[{"ImageSize", "\[Rule]", 
-         RowBox[{"{", 
-          RowBox[{"1000", ",", "1000"}], "}"}]}], ",", " ", 
-        "\[IndentingNewLine]", 
-        RowBox[{"SphericalRegion", "\[Rule]", " ", "True"}], ",", 
-        "\[IndentingNewLine]", 
-        RowBox[{"ViewPoint", "->", 
-         RowBox[{"{", 
+        RowBox[{"vplot", "=", 
+         RowBox[{"VectorPlot3D", "[", 
           RowBox[{
-           RowBox[{"-", "1"}], ",", "1", ",", ".7"}], "}"}]}]}], "]"}]}]}], 
-    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{"plotGeodesics", "[", 
-  RowBox[{"testZFunc", ",", " ", 
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{"1.5", ",", "1.7"}], "}"}], ",", 
+           RowBox[{"Flatten", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"testZGrad", "[", 
+               RowBox[{"u", ",", "v"}], "]"}], ",", "0"}], "}"}], "]"}], ",", 
+           
+           RowBox[{"{", 
+            RowBox[{"u", ",", "xmin", ",", "xmax"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"v", ",", "ymin", ",", "ymax"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"z", ",", 
+             RowBox[{"-", ".001"}], ",", ".001"}], "}"}], ",", " ", 
+           RowBox[{"VectorPoints", "\[Rule]", "Fine"}]}], "]"}]}], ","}], " ",
+        "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"f", "[", 
+          RowBox[{"U", ",", "V"}], "]"}], "===", 
+         RowBox[{"testZFunc", "[", 
+          RowBox[{"U", ",", "V"}], "]"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+          "Print", "[", "\"\<Oh boy a gradient stream plot\>\"", "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"vplot", "=", 
+           RowBox[{"StreamPlot", "[", 
+            RowBox[{
+             RowBox[{"testZGrad", "[", 
+              RowBox[{"u", ",", "v"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"u", ",", "xmin", ",", "xmax"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"v", ",", "ymin", ",", "ymax"}], "}"}], ",", 
+             RowBox[{"StreamPoints", "\[Rule]", "Fine"}], ",", 
+             RowBox[{"StreamScale", "\[Rule]", "Tiny"}], ",", 
+             RowBox[{"ImageSize", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"1000", ",", "1000"}], "}"}]}]}], "]"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Print", "[", "\"\<Oh boy something 3d\>\"", "]"}], ",", 
+          "\[IndentingNewLine]", " ", 
+          RowBox[{"vplot3D", "=", 
+           RowBox[{"VectorPlot3D", "[", 
+            RowBox[{
+             RowBox[{"Flatten", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"testZGrad", "[", 
+                 RowBox[{"u", ",", "v"}], "]"}], ",", "0"}], "}"}], "]"}], 
+             ",", 
+             RowBox[{"{", 
+              RowBox[{"u", ",", "xmin", ",", "xmax"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"v", ",", "ymin", ",", "ymax"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"z", ",", "4", ",", "4.001"}], "}"}], ",", " ", 
+             RowBox[{"VectorPoints", "\[Rule]", "15"}], ",", 
+             RowBox[{"VectorColorFunction", "\[Rule]", "\"\<Rainbow\>\""}]}], 
+            "]"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"Print", "[", "\"\<no gradient stream plot for u\>\"", "]"}],
+          "}"}]}], "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "\"\<ok now past it\>\"", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"Print", "[", 
+         RowBox[{"zJacobian", "[", 
+          RowBox[{"1", ",", "1"}], "]"}], "]"}], ";"}], "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"vplot", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"Show", "[", 
+        RowBox[{
+        "basePlot", ",", " ", "geoPlot", ",", "p", ",", "q", ",", "vplot3D", 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"Boxed", "\[Rule]", "False"}], ",", " ", 
+         RowBox[{"ImageSize", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"1000", ",", "1000"}], "}"}]}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"SphericalRegion", "\[Rule]", " ", "True"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ViewPoint", "->", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1"}], ",", "1", ",", ".7"}], "}"}]}]}], "]"}]}]}]}],
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plotGeodesics", "[", 
+   RowBox[{"testZFunc", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1.5", ",", "1.7"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "3"}], ",", ".3"}], "}"}]}], "}"}]}], "]"}], " ", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"plotGeodesics", "[", 
+    RowBox[{"torus", ",", " ", 
      RowBox[{"{", 
       RowBox[{
-       RowBox[{"-", "3"}], ",", ".3"}], "}"}]}], "}"}]}], 
-  "]"}], "\[IndentingNewLine]", 
- RowBox[{"plotGeodesics", "[", 
-  RowBox[{"torus", ",", " ", 
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{"1.5", ",", "1.7"}], "}"}], ",", 
-     RowBox[{"{", 
-      RowBox[{"3", ",", ".3"}], "}"}]}], "}"}]}], 
-  "]"}], "\[IndentingNewLine]", 
- RowBox[{"plotGeodesics", "[", 
-  RowBox[{"besselTest", ",", " ", 
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{"10.3", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1.5", ",", "1.7"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3", ",", ".3"}], "}"}]}], "}"}]}], "]"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"plotGeodesics", "[", 
+    RowBox[{"besselTest", ",", " ", 
      RowBox[{"{", 
       RowBox[{
-       RowBox[{"-", "3"}], ",", 
-       RowBox[{"-", "1"}]}], "}"}]}], "}"}]}], "]"}], "\[IndentingNewLine]", 
- RowBox[{"plotGeodesics", "[", 
-  RowBox[{"mobiusStrip", ",", " ", 
-   RowBox[{"{", 
-    RowBox[{
+       RowBox[{"{", 
+        RowBox[{"10.3", ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3"}], ",", 
+         RowBox[{"-", "1"}]}], "}"}]}], "}"}]}], "]"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"plotGeodesics", "[", 
+    RowBox[{"mobiusStrip", ",", " ", 
      RowBox[{"{", 
-      RowBox[{"1.5", ",", "1.7"}], "}"}], ",", 
-     RowBox[{"{", 
-      RowBox[{".52", ",", "8.3"}], "}"}]}], "}"}]}], 
-  "]"}], "\[IndentingNewLine]"}], "Input",
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1.5", ",", "1.7"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{".52", ",", "8.3"}], "}"}]}], "}"}]}], "]"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{{3.7622846053208303`*^9, 3.762284650651369*^9}, {
    3.762284713996031*^9, 3.7622848766580153`*^9}, {3.762284907858959*^9, 
    3.7622849797468576`*^9}, {3.762285012851198*^9, 3.762285050979702*^9}, {
@@ -450,12 +636,38 @@ Cell[BoxData[{
    3.7622912778279047`*^9, 3.762291307122366*^9}, {3.762291388386394*^9, 
    3.7622915581014233`*^9}, {3.762291590125318*^9, 3.7622917419168777`*^9}, {
    3.762291782893029*^9, 3.762291822075574*^9}, {3.762291864510396*^9, 
-   3.762291969385703*^9}},
- CellLabel->
-  "In[470]:=",ExpressionUUID->"d835881a-8b5d-436d-9a7a-7f6ebd132a8d"]
+   3.762291969385703*^9}, {3.762338396667663*^9, 3.76233840224004*^9}, {
+   3.76233872652912*^9, 3.762339025177352*^9}, {3.762339282294778*^9, 
+   3.762339302359692*^9}, {3.762339354531837*^9, 3.7623394256219*^9}, {
+   3.762339460715905*^9, 3.76233969919074*^9}, {3.7623397852705936`*^9, 
+   3.7623398752254057`*^9}, {3.762340110809951*^9, 3.7623401538722754`*^9}, {
+   3.7623401854895697`*^9, 3.762340198215529*^9}, {3.762340244885027*^9, 
+   3.762340366366907*^9}, {3.762340417854042*^9, 3.762340581825424*^9}, {
+   3.762340633633585*^9, 3.762340689781411*^9}, {3.762340752486319*^9, 
+   3.7623407709587727`*^9}, {3.762340815175968*^9, 3.762340868427142*^9}, {
+   3.7623409960455236`*^9, 3.762341095938356*^9}, {3.7623411338665857`*^9, 
+   3.762341140734859*^9}, {3.762341175774805*^9, 3.762341184282982*^9}, {
+   3.762341296708829*^9, 3.7623413258069077`*^9}, {3.762341412017221*^9, 
+   3.762341417820915*^9}, {3.7623414519218884`*^9, 3.76234150287215*^9}, 
+   3.762341575826578*^9, {3.7623416271837463`*^9, 3.762341815318521*^9}, 
+   3.7623418505100327`*^9, {3.762341889709434*^9, 3.762342016423168*^9}, {
+   3.7623421685015583`*^9, 3.7623422245324717`*^9}, {3.762342262098104*^9, 
+   3.762342271167809*^9}, {3.7623423136056347`*^9, 3.762342330046711*^9}, {
+   3.762342362347156*^9, 3.762342420411333*^9}, {3.762342455687049*^9, 
+   3.762342483457059*^9}, {3.762342548413198*^9, 3.762342641253613*^9}, {
+   3.762342673428157*^9, 3.762342810375112*^9}, {3.762342891873027*^9, 
+   3.762343011506016*^9}, {3.762343205972436*^9, 3.762343243815755*^9}, {
+   3.7623432965755672`*^9, 3.7623434026359453`*^9}, {3.762343443395508*^9, 
+   3.7623434595899363`*^9}},
+ CellLabel->"In[99]:=",ExpressionUUID->"d835881a-8b5d-436d-9a7a-7f6ebd132a8d"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7623432860675983`*^9, 
+  3.762343289243395*^9}},ExpressionUUID->"993e661c-17b9-4ab9-b5b4-\
+95ac7ba91d1d"]
 },
-WindowSize->{900, 1012},
-WindowMargins->{{-914, Automatic}, {Automatic, 34}},
+WindowSize->{976, 1012},
+WindowMargins->{{-1906, Automatic}, {Automatic, 34}},
 Magnification->0.75,
 FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
 StyleDefinitions->"Default.nb"
@@ -471,7 +683,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 16955, 434, 1514, "Input",ExpressionUUID->"d835881a-8b5d-436d-9a7a-7f6ebd132a8d"]
+Cell[558, 20, 25756, 641, 1946, "Input",ExpressionUUID->"d835881a-8b5d-436d-9a7a-7f6ebd132a8d"],
+Cell[26317, 663, 154, 3, 24, "Input",ExpressionUUID->"993e661c-17b9-4ab9-b5b4-95ac7ba91d1d"]
 }
 ]
 *)
