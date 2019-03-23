@@ -12,6 +12,7 @@
 *.dvi
 *.dpth
 *.auxlock
+*.ps
 *.synctex.gz
 *.fdb_latexmk
 **/auto/
