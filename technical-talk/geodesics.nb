@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     26884,        683]
-NotebookOptionsPosition[     26475,        668]
-NotebookOutlinePosition[     26834,        684]
-CellTagsIndexPosition[     26791,        681]
+NotebookDataLength[     26938,        684]
+NotebookOptionsPosition[     26529,        669]
+NotebookOutlinePosition[     26888,        685]
+CellTagsIndexPosition[     26845,        682]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -563,8 +563,7 @@ Cell[BoxData[{
           RowBox[{"{", 
            RowBox[{
             RowBox[{"-", "1"}], ",", "1", ",", ".7"}], "}"}]}]}], "]"}]}]}]}],
-     "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"plotGeodesics", "[", 
    RowBox[{"testZFunc", ",", " ", 
@@ -658,8 +657,10 @@ Cell[BoxData[{
    3.762342673428157*^9, 3.762342810375112*^9}, {3.762342891873027*^9, 
    3.762343011506016*^9}, {3.762343205972436*^9, 3.762343243815755*^9}, {
    3.7623432965755672`*^9, 3.7623434026359453`*^9}, {3.762343443395508*^9, 
-   3.7623434595899363`*^9}},
- CellLabel->"In[99]:=",ExpressionUUID->"d835881a-8b5d-436d-9a7a-7f6ebd132a8d"],
+   3.7623434595899363`*^9}, {3.762343648414507*^9, 3.762343651703538*^9}, {
+   3.762343692021144*^9, 
+   3.7623437179571543`*^9}},ExpressionUUID->"d835881a-8b5d-436d-9a7a-\
+7f6ebd132a8d"],
 
 Cell[BoxData[""], "Input",
  CellChangeTimes->{{3.7623432860675983`*^9, 
@@ -683,8 +684,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 25756, 641, 1946, "Input",ExpressionUUID->"d835881a-8b5d-436d-9a7a-7f6ebd132a8d"],
-Cell[26317, 663, 154, 3, 24, "Input",ExpressionUUID->"993e661c-17b9-4ab9-b5b4-95ac7ba91d1d"]
+Cell[558, 20, 25810, 642, 1928, "Input",ExpressionUUID->"d835881a-8b5d-436d-9a7a-7f6ebd132a8d"],
+Cell[26371, 664, 154, 3, 24, "Input",ExpressionUUID->"993e661c-17b9-4ab9-b5b4-95ac7ba91d1d"]
 }
 ]
 *)

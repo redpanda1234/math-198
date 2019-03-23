@@ -7,35 +7,56 @@
 \institute{Harvey Mudd College}
 \date{April 1st, 2018}
 
+\usepackage{fkmath}
+
 \usetikzlibrary{external}
-% \tikzexternalize
-\usepackage{pstricks}
-\usepackage{pst-geo}
+\tikzexternalize
 
 \begin{document}
 \frame{\titlepage}
-\section{Motivation}
+\section{Motivating Problems}
+
+\usepackage{animage}
+
 \begin{frame}{Airline}
-  \begin{pspicture}(-4,-4)(4,4)
-    \psset{RotX=-23,RotZ=30,PHI=46.5833,THETA=0.3333,visibility=false,
-      Decran=15,path=/usr/share/texmf-dist/tex/generic/pst-geo/data}
-    \WorldMapThreeD[circles=false,blueEarth=false]
-    \WorldMapThreeD[circles=false,visibility=true,opacity=0.7]
-    \psmeridien[visibility=true]{13.33}
-    \psparallel[visibility=true]{52.51}
-    \mapputIIID(13.33,52.51){Berlin}
-    \psparallel[visibility=true]{0}
-  \end{pspicture}
+
 \end{frame}
 
-\section{Proof Sketch}
-
-% Function:
-% z = 3 * (1-x)^2 * exp(-(x^2) - (y+1)^2) - 10 * (x/5 - x^3 - y^5) * exp(-x^2 -
-% y^2) - 1/3 * exp(-(x+1)^2 - y^2)
-
-\begin{frame}{An Example}
+\begin{frame}{Shortest Time Path}
+  \vfill
   \begin{figure}[h]
+    \begin{tikzpicture}[scale=2]
+      \def\r{1} % radius
+      \def\c{1.4} % center
+      \coordinate (O) at (0,0);
+      \coordinate (A) at (0,2*\r);
+      \coordinate (B) at (pi, 0);
+
+      % Cycloid
+      \draw[red,domain=0:pi,samples=50] plot ({\x - sin(\x r)},{\r+cos(\x r)});
+
+      % Straight line
+      \draw[blue] (A) -- (B);
+
+      % The other two
+      \draw[green, domain=0:pi, samples=50] plot ({\x}, {(-2/pi)*(\x-pi)*exp(-4*\x)});
+      \draw[orange, domain=0:pi, samples=50] plot ({\x}, {(-2/pi)*(\x-pi)*exp(\x/3)});
+
+      % Release point
+      \draw[fill=black] (A) circle (.75pt);
+
+      % End point
+      \draw[fill=black] (B) circle (.75pt);
+
+    \end{tikzpicture}
+  \end{figure}
+  \vfill
+\end{frame}
+
+
+\begin{frame}{Shortest Path}
+  \begin{figure}[h]
+    \vfill
     \centering
     \begin{tikzpicture}[
       scale=1.5,
@@ -45,7 +66,7 @@
         c(\x, \y) = -exp(-(\x+1)^2 - \y^2)/3;
         Z(\x, \y) = a(\x,\y) + b(\x,\y) + c(\x,\y);
       }
-    ]
+      ]
       \begin{axis}[
         view={230}{40},
         % axis lines=center,
@@ -68,15 +89,38 @@
 
       \end{axis}
     \end{tikzpicture}
+    \vfill
   \end{figure}
 \end{frame}
+
+% Function:
+% z = 3 * (1-x)^2 * exp(-(x^2) - (y+1)^2) - 10 * (x/5 - x^3 - y^5) * exp(-x^2 -
+% y^2) - 1/3 * exp(-(x+1)^2 - y^2)
+
+
+
+\begin{frame}{The statement}
+  \begin{theorem}[Euler-Lagrange]
+    Let $\Qq(t) : \RR \to \RR^n$ be a path. Then if $\Qq(t)$ is an
+    extreme value of the functional
+    \[
+      S(\Qq) = \int_a^b \mc L\pn{t, \Qq(t), \dot{\Qq}(t)} \dd t
+    \]
+    then $\Qq$ is a solution to the differential equation
+    \[
+      \pd{\mc L}{\Qq} - \od{}{t} \pn{\pd{\mc L}{\dot{\Qq}}} = 0
+    \]
+  \end{theorem}
+\end{frame}
+
+\section{Proof Sketch}
 
 \begin{frame}
   \begin{figure}[h]
     \centering
     \begin{tikzpicture}
-      \pgfmathsetmacro{\xmin}{-1};
-      \pgfmathsetmacro{\ymin}{-1};
+      \pgfmathsetmacro{\xmin}{-.2};
+      \pgfmathsetmacro{\ymin}{-.2};
       \pgfmathsetmacro{\xmax}{6};
       \pgfmathsetmacro{\ymax}{5};
 
@@ -91,20 +135,20 @@
       {-1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x)});
 
       \node[
-        circle,
-        draw=black,
-        fill=white,
-        inner sep=0pt,
-        minimum size=5pt
-        ] (y0) at (1, 1.56875) {};
+      circle,
+      draw=black,
+      fill=white,
+      inner sep=0pt,
+      minimum size=5pt
+      ] (y0) at (1, 1.56875) {};
 
       \node[
-        circle,
-        draw=black,
-        fill=white,
-        inner sep=0pt,
-        minimum size=5pt
-        ] (y1) at (5, 3.18126) {};
+      circle,
+      draw=black,
+      fill=white,
+      inner sep=0pt,
+      minimum size=5pt
+      ] (y1) at (5, 3.18126) {};
 
       % \draw[domain=\xmin:\xmax, smooth, variable=\x, blue] plot ({\x}, )
 
@@ -119,7 +163,7 @@
 % \begin{frame}
 %   \frametitle{References}
 %   \bibliographystyle{alpha}
-%   % \bibliographystyle{IEEE}
+%   %   \bibliographystyle{IEEE}
 %   \bibliography{aha.bib}
 % \end{frame}
 
