@@ -8,7 +8,7 @@
 \date{April 1st, 2018}
 
 \usetikzlibrary{external}
-\tikzexternalize
+% \tikzexternalize
 
 \begin{document}
 \frame{\titlepage}
@@ -27,27 +27,34 @@
   \begin{figure}[h]
     \centering
     \begin{tikzpicture}[
-      scale=1.25,
+      scale=1.5,
       declare function = {
         a(\x, \y) = 3*(1-\x)^2 * exp(-(\x^2)-(\y+1)^2);
         b(\x, \y) = -10*(\x/5 - \x^3 + \y^5) * exp(-\x^2 - \y^2);
         c(\x, \y) = -exp(-(\x+1)^2 - \y^2)/3;
         Z(\x, \y) = a(\x,\y) + b(\x,\y) + c(\x,\y);
-        % Z(\x, \y) = 3*(1-\x)^2 * exp(-(\x^2)-(\y+1)^2) - 10 * (\x/5 - \x^3 + \y^5) *
-        % exp(-\x^2 - \y^2) - exp(-(\x+1)^2 - \y^2)/3;
       }
-      ]
+    ]
       \begin{axis}[
-        view={230}{50},
+        view={230}{40},
         % axis lines=center,
-        enlargelimits,
+        % enlargelimits,
+        hide x axis,
+        hide y axis,
+        hide z axis,
         % tick align=inside,
         domain=-3.5:3.5,
         samples=60,
-        grid=major,
+        % grid=major,
         % minor tick num=5
         ]
         \addplot3 [surf] {Z(x,y)};
+        \addplot3 [only marks, mark options={scale=.3}] table[row sep=crcr] {
+          x y z \\
+          1.5 1.7 -.652 \\
+          -1 -1 4.563 \\
+        };
+
       \end{axis}
     \end{tikzpicture}
   \end{figure}
