@@ -1,0 +1,754 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     31009,        746]
+NotebookOptionsPosition[     30694,        732]
+NotebookOutlinePosition[     31053,        748]
+CellTagsIndexPosition[     31010,        745]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r", "=", "3"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"w", "=", ".25"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"testZFunc", "[", 
+    RowBox[{"{", 
+     RowBox[{"u_", ",", "v_"}], "}"}], "]"}], " ", ":=", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", " ", "v", ",", 
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "u"}], " ", 
+          RowBox[{"(", 
+           RowBox[{"2", "+", "u"}], ")"}]}], "-", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"1", "+", "v"}], ")"}], "2"]}]], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"3", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2", " ", "u"}]], " ", 
+          SuperscriptBox[
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"-", "1"}], "+", "u"}], ")"}], "2"]}], "+", 
+         RowBox[{
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2", " ", "v"}]], " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", "1"}], "-", 
+            RowBox[{"2", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"1", "+", 
+               RowBox[{"2", " ", "u"}]}]], " ", 
+             RowBox[{"(", 
+              RowBox[{"u", "-", 
+               RowBox[{"5", " ", 
+                SuperscriptBox["u", "3"]}], "+", 
+               RowBox[{"5", " ", 
+                SuperscriptBox["v", "5"]}]}], ")"}]}]}], ")"}]}]}], ")"}]}], 
+      ")"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"onlyZ", "[", 
+     RowBox[{"u_", ",", "v_"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"Take", "[", 
+      RowBox[{
+       RowBox[{"testZFunc", "[", 
+        RowBox[{"{", 
+         RowBox[{"u", ",", "v"}], "}"}], "]"}], ",", 
+       RowBox[{"{", "3", "}"}]}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"testZGrad", "[", 
+     RowBox[{"u_", ",", "v_"}], "]"}], "=", 
+    RowBox[{"Grad", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Function", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"u", ",", "v"}], "}"}], ",", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox["\[ExponentialE]", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", "u"}], " ", 
+               RowBox[{"(", 
+                RowBox[{"2", "+", "u"}], ")"}]}], "-", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{"1", "+", "v"}], ")"}], "2"]}]], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"3", " ", 
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"2", " ", "u"}]], " ", 
+               SuperscriptBox[
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"-", "1"}], "+", "u"}], ")"}], "2"]}], "+", 
+              RowBox[{
+               SuperscriptBox["\[ExponentialE]", 
+                RowBox[{"2", " ", "v"}]], " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"-", "1"}], "-", 
+                 RowBox[{"2", " ", 
+                  SuperscriptBox["\[ExponentialE]", 
+                   RowBox[{"1", "+", 
+                    RowBox[{"2", " ", "u"}]}]], " ", 
+                  RowBox[{"(", 
+                   RowBox[{"u", "-", 
+                    RowBox[{"5", " ", 
+                    SuperscriptBox["u", "3"]}], "+", 
+                    RowBox[{"5", " ", 
+                    SuperscriptBox["v", "5"]}]}], ")"}]}]}], ")"}]}]}], 
+             ")"}]}], ")"}], "/", "3"}]}], "]"}], "[", 
+       RowBox[{"u", ",", "v"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"u", ",", "v"}], "}"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"torus", "[", 
+    RowBox[{"{", 
+     RowBox[{"u_", ",", "v_"}], "}"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Cos", "[", "u", "]"}], "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"Sin", "[", "v", "]"}], "+", "r"}], ")"}]}], ",", 
+     RowBox[{
+      RowBox[{"Sin", "[", "u", "]"}], "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"Sin", "[", "v", "]"}], "+", "r"}], ")"}]}], ",", 
+     RowBox[{"Cos", "[", "v", "]"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"besselTest", "[", 
+     RowBox[{"{", 
+      RowBox[{"u_", ",", "v_"}], "}"}], "]"}], ":=", 
+    RowBox[{"{", 
+     RowBox[{"u", ",", "v", ",", 
+      RowBox[{"10", "*", 
+       RowBox[{"BesselJ", "[", 
+        RowBox[{"0", ",", 
+         RowBox[{"Sqrt", "[", 
+          RowBox[{
+           RowBox[{"u", "^", "2"}], "+", 
+           RowBox[{"v", "^", "2"}]}], "]"}]}], "]"}]}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"mobiusStrip", "[", 
+     RowBox[{"{", 
+      RowBox[{"u_", ",", "v_"}], "}"}], "]"}], ":=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"r", " ", "+", " ", 
+         RowBox[{"u", "*", 
+          RowBox[{"Cos", "[", 
+           RowBox[{".5", "*", "v"}], "]"}]}]}], ")"}], "*", 
+       RowBox[{"Cos", "[", "v", "]"}]}], ",", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"r", "+", 
+         RowBox[{"Cos", "[", 
+          RowBox[{".5", "*", "v"}], "]"}]}], ")"}], "*", 
+       RowBox[{"Sin", "[", "v", "]"}]}], ",", " ", 
+      RowBox[{"u", "*", 
+       RowBox[{"Sin", "[", 
+        RowBox[{".5", "*", "v"}], "]"}]}]}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "geodesicFindMin", "]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"geodesicFindMin", "[", 
+     RowBox[{"f_", ",", 
+      RowBox[{"{", 
+       RowBox[{"p1_", ",", "p2_"}], "}"}], ",", 
+      RowBox[{"nPts_:", " ", "100"}]}], "]"}], ":=", "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+       "approximatePts", ",", "\[IndentingNewLine]", "optimizeOffset", ",", 
+        "\[IndentingNewLine]", "optimizeOffsets", ",", "\[IndentingNewLine]", 
+        "direction", ",", "normal", ",", "\[IndentingNewLine]", "pathLength", 
+        ",", "\[IndentingNewLine]", "optimalPath", ",", "\[IndentingNewLine]",
+         "interpolations", ",", "len", ",", "\[IndentingNewLine]", 
+        "solution"}], "\[IndentingNewLine]", "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"Direction", " ", "to", " ", "solve", " ", "in"}], " ", "*)"}],
+       "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"direction", "=", 
+        RowBox[{"p2", "-", "p1"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"normal", "=", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "1"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "1"}], ",", "0"}], "}"}]}], "}"}], ".", 
+         "direction"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"approximatePts", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{
+          RowBox[{"{", "p1", "}"}], ",", 
+          RowBox[{"Table", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"p1", "+", 
+             RowBox[{"i", "*", 
+              RowBox[{"direction", "/", 
+               RowBox[{"(", 
+                RowBox[{"nPts", "+", "1"}], ")"}]}]}], "+", 
+             RowBox[{
+              RowBox[{"optimizeOffset", "[", "i", "]"}], "*", "normal"}]}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "nPts"}], "}"}]}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", "p2", "}"}]}], "\[IndentingNewLine]", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"pathLength", "=", 
+        RowBox[{"Total", "[", 
+         RowBox[{"Norm", "/@", 
+          RowBox[{"Differences", "[", 
+           RowBox[{"f", "/@", "approximatePts"}], "]"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"len", ",", "solution"}], "}"}], "=", 
+        RowBox[{"Quiet", "[", "\[IndentingNewLine]", 
+         RowBox[{"FindMinimum", "[", 
+          RowBox[{"pathLength", ",", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"optimizeOffset", "[", "i", "]"}], ",", "0"}], "}"}], 
+             ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "nPts"}], "}"}]}], "]"}]}], "]"}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"optimalPath", "=", 
+        RowBox[{"approximatePts", "/.", "solution"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"interpolations", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"ListInterpolation", "[", 
+           RowBox[{"#", ",", 
+            RowBox[{"{", 
+             RowBox[{"{", 
+              RowBox[{"0", ",", "1"}], "}"}], "}"}]}], "]"}], "&"}], "/@", 
+         RowBox[{"Transpose", "[", "optimalPath", "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Function", "[", 
+        RowBox[{"t", ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"#", "[", "t", "]"}], "&"}], "/@", "interpolations"}]}], 
+        "]"}]}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"plotGeodesics", "[", 
+    RowBox[{"f_", ",", " ", "pts_", ",", " ", 
+     RowBox[{"samplePts_:", "True"}]}], "]"}], ":=", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "planePlot", ",", " ", "basePlot", ",", " ", "geoPlot", ",", " ", 
+       "geoMins"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"geoMins", "=", 
+       RowBox[{"geodesicFindMin", "[", 
+        RowBox[{"f", ",", "pts"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Switch", "[", 
+       RowBox[{
+        RowBox[{"f", "[", 
+         RowBox[{"U", ",", "V"}], "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"torus", "[", 
+         RowBox[{"U", ",", "V"}], "]"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"xdomain", "=", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}]}], ",", 
+          RowBox[{"ydomain", "=", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "2"}], "Pi"}], ",", 
+             RowBox[{"2", "Pi"}]}], "}"}]}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"testZFunc", "[", 
+         RowBox[{"U", ",", "V"}], "]"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"xdomain", "=", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "3.5"}], ",", "3.5"}], "}"}]}], ",", 
+          RowBox[{"ydomain", "=", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "3.5"}], ",", "3.5"}], "}"}]}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"besselTest", "[", 
+         RowBox[{"U", ",", "V"}], "]"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"xdomain", "=", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "20"}], ",", "20"}], "}"}]}], ",", 
+          RowBox[{"ydomain", "=", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "20"}], ",", "20"}], "}"}]}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"mobiusStrip", "[", 
+         RowBox[{"U", ",", "V"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"xdomain", "=", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "Pi"}], "}"}]}], ",", 
+          RowBox[{"ydomain", "=", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             RowBox[{"2", "*", "Pi"}]}], "}"}]}]}], "}"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"basePlot", "=", 
+       RowBox[{"ParametricPlot3D", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"xmin", "=", 
+           RowBox[{"xdomain", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"xmax", "=", 
+           RowBox[{"xdomain", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"ymin", "=", 
+           RowBox[{"ydomain", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"ymax", "=", 
+           RowBox[{"ydomain", "[", 
+            RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"f", "[", 
+           RowBox[{"{", 
+            RowBox[{"u", ",", "v"}], "}"}], "]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"u", ",", "xmin", ",", "xmax"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"v", ",", 
+           RowBox[{"-", "ymax"}], ",", "ymax"}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Axes", "\[Rule]", "False"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", "All"}], ",", " ", 
+         RowBox[{"ColorFunction", "\[Rule]", "\"\<Rainbow\>\""}], ",", " ", 
+         RowBox[{"MaxRecursion", "\[Rule]", "5"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"BoxRatios", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "1", ",", ".5"}], "}"}]}]}], " ", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "Compress", " ", "Z", " ", "axis", " ", "by", " ", "a", " ", 
+          "factor", " ", "of", " ", "10"}], " ", "*)"}], 
+        "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"geoPlot", "=", 
+       RowBox[{"ParametricPlot3D", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Evaluate", "[", 
+          RowBox[{"f", "[", 
+           RowBox[{"geoMins", "[", "t", "]"}], "]"}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"PlotStyle", "\[Rule]", "White"}]}], "\[IndentingNewLine]", 
+        "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "get", " ", "the", " ", "black", " ", "dots", " ", "for", " ", "the", 
+        " ", "endpoints"}], " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"p", " ", "=", " ", 
+       RowBox[{"Graphics3D", "[", 
+        RowBox[{"{", 
+         RowBox[{"Black", ",", 
+          RowBox[{"PointSize", "[", ".015", "]"}], ",", 
+          RowBox[{"Point", "[", 
+           RowBox[{"f", "[", 
+            RowBox[{"pts", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}]}], "}"}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"q", " ", "=", " ", 
+       RowBox[{"Graphics3D", "[", 
+        RowBox[{"{", 
+         RowBox[{"Black", ",", 
+          RowBox[{"PointSize", "[", ".015", "]"}], ",", 
+          RowBox[{"Point", "[", 
+           RowBox[{"f", "[", 
+            RowBox[{"pts", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "]"}], "]"}]}], "}"}], "]"}]}], 
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{"samplePts", ",", "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"numSamplePoints", "=", "100"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"myList", "=", 
+           RowBox[{"Join", "[", 
+            RowBox[{
+             RowBox[{"{", "0", "}"}], ",", 
+             RowBox[{"Range", "[", "numSamplePoints", "]"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"myList", "=", 
+           RowBox[{"myList", "/", "numSamplePoints"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"myPts", "=", 
+           RowBox[{"Map", "[", 
+            RowBox[{"f", ",", 
+             RowBox[{"Map", "[", 
+              RowBox[{"geoMins", ",", "myList"}], "]"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Print", "[", "myPts", "]"}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", "}"}]}], "\[IndentingNewLine]", "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{"vplot", "=", 
+         RowBox[{"VectorPlot3D", "[", 
+          RowBox[{
+           RowBox[{"Flatten", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"testZGrad", "[", 
+               RowBox[{"u", ",", "v"}], "]"}], ",", "0"}], "}"}], "]"}], ",", 
+           
+           RowBox[{"{", 
+            RowBox[{"u", ",", "xmin", ",", "xmax"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"v", ",", "ymin", ",", "ymax"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"z", ",", 
+             RowBox[{"-", ".001"}], ",", ".001"}], "}"}], ",", " ", 
+           RowBox[{"VectorPoints", "\[Rule]", "Fine"}]}], "]"}]}], ","}], " ",
+        "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"(*", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"f", "[", 
+            RowBox[{"U", ",", "V"}], "]"}], "===", 
+           RowBox[{"testZFunc", "[", 
+            RowBox[{"U", ",", "V"}], "]"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+            "Print", "[", "\"\<Oh boy a gradient stream plot\>\"", "]"}], ",",
+             "\[IndentingNewLine]", 
+            RowBox[{"vplot", "=", 
+             RowBox[{"StreamPlot", "[", 
+              RowBox[{
+               RowBox[{"testZGrad", "[", 
+                RowBox[{"u", ",", "v"}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"u", ",", "xmin", ",", "xmax"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"v", ",", "ymin", ",", "ymax"}], "}"}], ",", 
+               RowBox[{"StreamPoints", "\[Rule]", "Fine"}], ",", 
+               RowBox[{"StreamScale", "\[Rule]", "Tiny"}], ",", 
+               RowBox[{"ImageSize", "\[Rule]", 
+                RowBox[{"{", 
+                 RowBox[{"1000", ",", "1000"}], "}"}]}]}], "]"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", "\"\<Oh boy something 3d\>\"", "]"}], ",", 
+            "\[IndentingNewLine]", " ", 
+            RowBox[{"vplot3D", "=", 
+             RowBox[{"VectorPlot3D", "[", 
+              RowBox[{
+               RowBox[{"Flatten", "[", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"testZGrad", "[", 
+                   RowBox[{"u", ",", "v"}], "]"}], ",", "0"}], "}"}], "]"}], 
+               ",", 
+               RowBox[{"{", 
+                RowBox[{"u", ",", "xmin", ",", "xmax"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"v", ",", "ymin", ",", "ymax"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"z", ",", "4", ",", "4.001"}], "}"}], ",", " ", 
+               RowBox[{"VectorPoints", "\[Rule]", "30"}], ",", 
+               RowBox[{
+               "VectorColorFunction", "\[Rule]", "\"\<Rainbow\>\""}]}], 
+              "]"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+           "Print", "[", "\"\<no gradient stream plot for u\>\"", "]"}], 
+           "}"}]}], "\[IndentingNewLine]", "]"}], ";"}], 
+       "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "vplot", " ", "*)"}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Show", "[", 
+       RowBox[{
+       "basePlot", ",", " ", "geoPlot", ",", " ", "p", ",", "q", ",", 
+        RowBox[{"(*", " ", 
+         RowBox[{"vplot3D", ","}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"Boxed", "\[Rule]", "False"}], ",", " ", 
+        RowBox[{"ImageSize", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"1000", ",", "1000"}], "}"}]}], ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"SphericalRegion", "\[Rule]", " ", "True"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"ViewPoint", "->", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "1"}], ",", "1", ",", ".7"}], "}"}]}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"zContourPlot", "=", 
+       RowBox[{"ContourPlot", "[", 
+        RowBox[{
+         RowBox[{"onlyZ", "[", 
+          RowBox[{"u", ",", "v"}], "]"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"u", ",", "xmin", ",", "xmax"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"v", ",", "ymin", ",", "ymax"}], "}"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+         RowBox[{"MaxRecursion", "\[Rule]", "5"}], ",", 
+         RowBox[{"PlotPoints", "\[Rule]", "50"}], ",", 
+         RowBox[{"Contours", "\[Rule]", "30"}], ",", 
+         RowBox[{"ColorFunction", "\[Rule]", "\"\<Rainbow\>\""}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"projectedGeo", "=", 
+       RowBox[{"ParametricPlot", "[", 
+        RowBox[{
+         RowBox[{"geoMins", "[", "t", "]"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", " ", 
+         RowBox[{"PlotStyle", "\[Rule]", "White"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Show", "[", 
+       RowBox[{"zContourPlot", ",", " ", "projectedGeo", ",", 
+        RowBox[{"ImageSize", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"1000", ",", "1000"}], "}"}]}]}], "]"}]}], 
+     "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plotGeodesics", "[", 
+   RowBox[{"testZFunc", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1.5", ",", "2"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", ".5"}], ",", 
+        RowBox[{"-", "1.5"}]}], "}"}]}], "}"}], ",", " ", "False"}], "]"}], 
+  " ", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plotGeodesics", "[", 
+   RowBox[{"torus", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1.5", ",", "1.7"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"3", ",", ".3"}], "}"}]}], "}"}]}], "]"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plotGeodesics", "[", 
+   RowBox[{"besselTest", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"10.3", ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "3"}], ",", 
+        RowBox[{"-", "1"}]}], "}"}]}], "}"}]}], "]"}], 
+  " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plotGeodesics", "[", 
+   RowBox[{"mobiusStrip", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1.5", ",", "1.7"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{".52", ",", "8.3"}], "}"}]}], "}"}]}], "]"}], " ", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7622846053208303`*^9, 3.762284650651369*^9}, {
+   3.762284713996031*^9, 3.7622848766580153`*^9}, {3.762284907858959*^9, 
+   3.7622849797468576`*^9}, {3.762285012851198*^9, 3.762285050979702*^9}, {
+   3.7622850934828444`*^9, 3.762285208949008*^9}, {3.762285249834835*^9, 
+   3.7622852645845203`*^9}, {3.7622853428250113`*^9, 3.762285473282527*^9}, {
+   3.7622855154671783`*^9, 3.762285572559724*^9}, {3.762285607665718*^9, 
+   3.7622856088431473`*^9}, {3.7622857020502996`*^9, 3.762286963825259*^9}, {
+   3.76228699442388*^9, 3.762287109676291*^9}, {3.762287168680649*^9, 
+   3.7622872193629017`*^9}, 3.7622874126923237`*^9, {3.762287590247512*^9, 
+   3.762287615134303*^9}, {3.76228765130942*^9, 3.762287703884108*^9}, {
+   3.762287740343896*^9, 3.762287897077732*^9}, {3.762287946556868*^9, 
+   3.762288083764797*^9}, {3.762288115792544*^9, 3.762288124073696*^9}, {
+   3.7622881680777607`*^9, 3.762288673187212*^9}, {3.7622887031935587`*^9, 
+   3.7622887269266453`*^9}, {3.762288758561164*^9, 3.762288820283675*^9}, {
+   3.762288855902267*^9, 3.762288871203787*^9}, {3.7622890576385403`*^9, 
+   3.7622890770404577`*^9}, {3.76228910778174*^9, 3.7622893089606*^9}, 
+   3.762289496497246*^9, {3.762289561765216*^9, 3.762289633394298*^9}, {
+   3.762289670381947*^9, 3.7622897785781393`*^9}, {3.762289824204782*^9, 
+   3.7622898639017477`*^9}, 3.762289945065027*^9, {3.762289993353784*^9, 
+   3.762290045431638*^9}, {3.762290080017747*^9, 3.762290081116386*^9}, {
+   3.7622901259192133`*^9, 3.7622901559665337`*^9}, {3.7622902162130632`*^9, 
+   3.762290250570841*^9}, {3.762290281641905*^9, 3.7622903356160994`*^9}, 
+   3.7622904204132338`*^9, {3.762290548518792*^9, 3.762290582872995*^9}, {
+   3.7622906218615913`*^9, 3.762290623469886*^9}, {3.762290661137347*^9, 
+   3.762290718476151*^9}, {3.7622908645281363`*^9, 3.762291239488781*^9}, {
+   3.7622912778279047`*^9, 3.762291307122366*^9}, {3.762291388386394*^9, 
+   3.7622915581014233`*^9}, {3.762291590125318*^9, 3.7622917419168777`*^9}, {
+   3.762291782893029*^9, 3.762291822075574*^9}, {3.762291864510396*^9, 
+   3.762291969385703*^9}, {3.762338396667663*^9, 3.76233840224004*^9}, {
+   3.76233872652912*^9, 3.762339025177352*^9}, {3.762339282294778*^9, 
+   3.762339302359692*^9}, {3.762339354531837*^9, 3.7623394256219*^9}, {
+   3.762339460715905*^9, 3.76233969919074*^9}, {3.7623397852705936`*^9, 
+   3.7623398752254057`*^9}, {3.762340110809951*^9, 3.7623401538722754`*^9}, {
+   3.7623401854895697`*^9, 3.762340198215529*^9}, {3.762340244885027*^9, 
+   3.762340366366907*^9}, {3.762340417854042*^9, 3.762340581825424*^9}, {
+   3.762340633633585*^9, 3.762340689781411*^9}, {3.762340752486319*^9, 
+   3.7623407709587727`*^9}, {3.762340815175968*^9, 3.762340868427142*^9}, {
+   3.7623409960455236`*^9, 3.762341095938356*^9}, {3.7623411338665857`*^9, 
+   3.762341140734859*^9}, {3.762341175774805*^9, 3.762341184282982*^9}, {
+   3.762341296708829*^9, 3.7623413258069077`*^9}, {3.762341412017221*^9, 
+   3.762341417820915*^9}, {3.7623414519218884`*^9, 3.76234150287215*^9}, 
+   3.762341575826578*^9, {3.7623416271837463`*^9, 3.762341815318521*^9}, 
+   3.7623418505100327`*^9, {3.762341889709434*^9, 3.762342016423168*^9}, {
+   3.7623421685015583`*^9, 3.7623422245324717`*^9}, {3.762342262098104*^9, 
+   3.762342271167809*^9}, {3.7623423136056347`*^9, 3.762342330046711*^9}, {
+   3.762342362347156*^9, 3.762342420411333*^9}, {3.762342455687049*^9, 
+   3.762342483457059*^9}, {3.762342548413198*^9, 3.762342641253613*^9}, {
+   3.762342673428157*^9, 3.762342810375112*^9}, {3.762342891873027*^9, 
+   3.762343011506016*^9}, {3.762343205972436*^9, 3.762343243815755*^9}, {
+   3.7623432965755672`*^9, 3.7623434026359453`*^9}, {3.762343443395508*^9, 
+   3.7623434595899363`*^9}, {3.762343648414507*^9, 3.762343651703538*^9}, {
+   3.762343692021144*^9, 3.7623437179571543`*^9}, {3.762355463232686*^9, 
+   3.7623554772527227`*^9}, {3.76235552691844*^9, 3.762355608481628*^9}, {
+   3.7623556524598923`*^9, 3.7623556649976788`*^9}, {3.76236579795924*^9, 
+   3.762365798042523*^9}, {3.762365893569858*^9, 3.762365923266053*^9}, {
+   3.76236628234682*^9, 3.762366357019272*^9}, {3.76236654045885*^9, 
+   3.762366618698764*^9}, {3.76236677625119*^9, 3.762366961565112*^9}, {
+   3.762367001064465*^9, 3.76236706127103*^9}, {3.762367137215631*^9, 
+   3.762367161221377*^9}, {3.762367258441875*^9, 3.762367265190834*^9}, {
+   3.762367345187405*^9, 3.7623673466021023`*^9}, {3.762367415978684*^9, 
+   3.7623675336454897`*^9}, {3.7623676295250797`*^9, 
+   3.7623676402709713`*^9}, {3.762367699716416*^9, 3.7623677685341043`*^9}, {
+   3.762367799942301*^9, 3.762367819982587*^9}, {3.7623678758986797`*^9, 
+   3.7623678850662727`*^9}, {3.7623681365951843`*^9, 3.762368216901475*^9}, {
+   3.7623682722314157`*^9, 3.762368343881508*^9}, {3.762368393769663*^9, 
+   3.7623684211025476`*^9}, {3.7623684927220984`*^9, 3.762368556361267*^9}, {
+   3.762368659089672*^9, 3.762368659250695*^9}, {3.762368739594523*^9, 
+   3.762368782263324*^9}, {3.762368824966044*^9, 3.762368858993533*^9}, {
+   3.762369036513464*^9, 3.7623690523000317`*^9}, {3.762369129544969*^9, 
+   3.762369159663775*^9}, {3.762369258426201*^9, 3.762369294664689*^9}, {
+   3.7623693290706797`*^9, 3.7623693361274242`*^9}, 3.7623694550152693`*^9, {
+   3.762369487846106*^9, 3.7623694957857647`*^9}, {3.762369531484768*^9, 
+   3.762369539948699*^9}, {3.7623695763200207`*^9, 3.762369576573839*^9}, 
+   3.762370347080038*^9, {3.7623717789383173`*^9, 3.762371788467412*^9}, {
+   3.7623732039969263`*^9, 3.762373261618074*^9}, {3.762373296433509*^9, 
+   3.7623734470848207`*^9}, {3.762373486085558*^9, 3.7623734862258663`*^9}, {
+   3.76237357118853*^9, 3.762373572554801*^9}, {3.762373974463882*^9, 
+   3.762373975896926*^9}, {3.7623741660789347`*^9, 3.762374174108*^9}, {
+   3.7623743140142403`*^9, 3.762374399168264*^9}, {3.762374471326365*^9, 
+   3.762374476694117*^9}, {3.762374527168631*^9, 3.762374613791361*^9}, {
+   3.762374652043997*^9, 3.762374712018042*^9}, {3.762374752052964*^9, 
+   3.7623747680453167`*^9}, {3.7623748015221357`*^9, 
+   3.7623748072111387`*^9}, {3.76237493388445*^9, 3.762374980185837*^9}, {
+   3.762375422065979*^9, 3.7623754232586927`*^9}, {3.76237750964275*^9, 
+   3.762377578387144*^9}, {3.762377641107589*^9, 3.762377736308811*^9}, {
+   3.762377779369155*^9, 3.762377875923016*^9}, {3.762377909441272*^9, 
+   3.7623779817296877`*^9}, {3.762378012032357*^9, 3.762378051325522*^9}, {
+   3.762378125124905*^9, 3.762378169917233*^9}, {3.762378207990533*^9, 
+   3.762378210398747*^9}, {3.762378318475767*^9, 3.762378323839087*^9}, {
+   3.762382706294654*^9, 
+   3.762382713148641*^9}},ExpressionUUID->"d835881a-8b5d-436d-9a7a-\
+7f6ebd132a8d"]
+},
+WindowSize->{1892, 1012},
+WindowMargins->{{Automatic, 1616}, {Automatic, 32}},
+Magnification->0.75,
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 30132, 710, 2191, "Input",ExpressionUUID->"d835881a-8b5d-436d-9a7a-7f6ebd132a8d"]
+}
+]
+*)
+
