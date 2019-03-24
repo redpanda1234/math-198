@@ -17,6 +17,7 @@
 *.fdb_latexmk
 *.png
 *.gif
+*.anim
 !technical-talk/side-by-side/side-by-side-wind_anim.gif
 !technical-talk/side-by-side/side-by-side.gif
 technical-talk/pgf_string.txt
