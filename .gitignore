@@ -15,4 +15,10 @@
 *.ps
 *.synctex.gz
 *.fdb_latexmk
+*.png
+*.gif
+!technical-talk/side-by-side/side-by-side-wind_anim.gif
+!technical-talk/side-by-side/side-by-side.gif
+technical-talk/pgf_string.txt
+technical-talk/kobayashi_talk5-figure*
 **/auto/
