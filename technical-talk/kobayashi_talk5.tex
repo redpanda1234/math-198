@@ -10,7 +10,7 @@
 \usepackage{fkmath}
 \usepackage{animate}
 \usetikzlibrary{external}
-% \tikzexternalize
+\tikzexternalize
 
 
 \begin{document}
@@ -19,17 +19,17 @@
 
 
 
-\begin{frame}{Airline}
-  \begin{figure}[h]
-    \centering
-    \animategraphics[keepaspectratio,height=6cm]{20}{animations/side-by-side/side-by-side-}{0}{116}
-  \end{figure}
-\end{frame}
+% \begin{frame}{Airline}
+%   \begin{figure}[h]
+%     \centering
+%     \animategraphics[keepaspectratio,height=6cm]{20}{animations/side-by-side/side-by-side-}{0}{116}
+%   \end{figure}
+% \end{frame}
 
 \begin{frame}{Wind}
   \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,height=5cm]{vector-field.pdf}
+    \includegraphics[keepaspectratio,height=5cm]{figures/vector-field.pdf}
     \caption{Wind Vector Field}
     \label{fig:wind}
   \end{figure}
@@ -38,40 +38,40 @@
 \begin{frame}{Underlying Scalar Function}
   \begin{figure}[h]
     \centering
-    \includegraphics[keepaspectratio,height=7cm]{vect-to-scalar.pdf}
+    \includegraphics[keepaspectratio,height=7cm]{figures/vect-to-scalar.pdf}
   \end{figure}
 \end{frame}
 
-% \begin{frame}{Shortest Time Path}
-%   \vfill
-%   \begin{figure}[h]
-%     \begin{tikzpicture}[scale=2]
-%       \def\r{1} % radius
-%       \def\c{1.4} % center
-%       \coordinate (O) at (0,0);
-%       \coordinate (A) at (0,2*\r);
-%       \coordinate (B) at (pi, 0);
+\begin{frame}{Shortest Time Path}
+  \vfill
+  \begin{figure}[h]
+    \begin{tikzpicture}[scale=2]
+      \def\r{1} % radius
+      \def\c{1.4} % center
+      \coordinate (O) at (0,0);
+      \coordinate (A) at (0,2*\r);
+      \coordinate (B) at (pi, 0);
 
-%       % Cycloid
-%       \draw[red,domain=0:pi,samples=50] plot ({\x - sin(\x r)},{\r+cos(\x r)});
+      % Cycloid
+      \draw[red,domain=0:pi,samples=50] plot ({\x - sin(\x r)},{\r+cos(\x r)});
 
-%       % Straight line
-%       \draw[blue] (A) -- (B);
+      % Straight line
+      \draw[blue] (A) -- (B);
 
-%       % The other two
-%       \draw[green, domain=0:pi, samples=50] plot ({\x}, {(-2/pi)*(\x-pi)*exp(-4*\x)});
-%       \draw[orange, domain=0:pi, samples=50] plot ({\x}, {(-2/pi)*(\x-pi)*exp(\x/3)});
+      % The other two
+      \draw[green, domain=0:pi, samples=50] plot ({\x}, {(-2/pi)*(\x-pi)*exp(-4*\x)});
+      \draw[orange, domain=0:pi, samples=50] plot ({\x}, {(-2/pi)*(\x-pi)*exp(\x/3)});
 
-%       % Release point
-%       \draw[fill=black] (A) circle (.75pt);
+      % Release point
+      \draw[fill=black] (A) circle (.75pt);
 
-%       % End point
-%       \draw[fill=black] (B) circle (.75pt);
+      % End point
+      \draw[fill=black] (B) circle (.75pt);
 
-%     \end{tikzpicture}
-%   \end{figure}
-%   \vfill
-% \end{frame}
+    \end{tikzpicture}
+  \end{figure}
+  \vfill
+\end{frame}
 
 
 \begin{frame}{Shortest Path}
@@ -105,6 +105,8 @@
         };
 
         \addplot3 [color=eek, line width=.3mm] table[row sep=crcr] {
+
+
           x y z\\
           1.5 2. -0.558409\\
           1.51642 1.94419 -0.563117\\
@@ -156,6 +158,7 @@
           0.47374 0.404291 0.000850495\\
           0.463844 0.363518 0.010356\\
           0.456166 0.321477 0.0193537\\
+
           0.450241 0.278434 0.0280568\\
           0.445477 0.234727 0.0366758\\
           0.441231 0.190725 0.0453312\\
