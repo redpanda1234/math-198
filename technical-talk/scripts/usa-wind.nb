@@ -1,0 +1,235 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8356,        227]
+NotebookOptionsPosition[      7781,        211]
+NotebookOutlinePosition[      8119,        226]
+CellTagsIndexPosition[      8076,        223]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"windVelocity", "[", 
+   RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"QuantityMagnitude", "@", 
+     RowBox[{"WeatherData", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"y", ",", "x"}], "}"}], ",", "\"\<WindSpeed\>\""}], "]"}]}]}],
+    " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"1", "/", 
+      RowBox[{"Cos", "[", 
+       RowBox[{"y", " ", "\[Degree]"}], "]"}]}], ",", "1"}], "}"}], " ", 
+   RowBox[{"Through", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"Sin", ",", "Cos"}], "}"}], "[", 
+     RowBox[{"WeatherData", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"y", ",", "x"}], "}"}], ",", "\"\<WindDirection\>\""}], "]"}],
+      "]"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"filter", "[", "d_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Cases", "[", 
+    RowBox[{"d", ",", 
+     RowBox[{"u_", "/;", 
+      RowBox[{"FreeQ", "[", 
+       RowBox[{"u", ",", "\"\<NotAvailable\>\""}], "]"}]}]}], "]"}], "/.", 
+   RowBox[{"0.", "\[Rule]", ".001"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"outline", "=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"GrayLevel", "[", "0.2", "]"}], ",", 
+      RowBox[{"AbsoluteThickness", "[", "3.0", "]"}], ",", 
+      RowBox[{
+       RowBox[{"CountryData", "[", 
+        RowBox[{"\"\<UnitedStates\>\"", ",", "\"\<Polygon\>\""}], "]"}], "/.", 
+       RowBox[{"Polygon", "\[Rule]", "Line"}]}]}], "}"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<Getting data?\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"windData", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y"}], "}"}], ",", 
+         RowBox[{"windVelocity", "[", 
+          RowBox[{"x", ",", "y"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", 
+         RowBox[{"-", "125"}], ",", 
+         RowBox[{"-", "67"}], ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", "24", ",", "50", ",", "2"}], "}"}]}], "]"}], "//", 
+     RowBox[{
+      RowBox[{"Flatten", "[", 
+       RowBox[{"#", ",", "1"}], "]"}], "&"}]}], "//", "filter"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<gotten data.\>\"", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.762970776238689*^9, 3.762970779921726*^9}, {
+   3.762971025979701*^9, 3.762971069843804*^9}, 3.7629711112988853`*^9, {
+   3.762971142836145*^9, 3.7629711664785013`*^9}, {3.7629712493026857`*^9, 
+   3.762971294137081*^9}, {3.762971385710416*^9, 3.762971407944599*^9}, 
+   3.76297147474794*^9, {3.762971549275897*^9, 3.762971552443363*^9}, {
+   3.762971608891925*^9, 3.7629716104117002`*^9}, 3.762971650839346*^9, {
+   3.762972052702195*^9, 3.7629720551600018`*^9}, 3.7629723606868963`*^9},
+ CellLabel->"In[1]:=",ExpressionUUID->"97c4507b-1a4b-479a-9719-331f84c29ee5"],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+  "\"\<~/files/school/math-198/technical-talk/scripts/windData.nb\>\"", ",", 
+   " ", "windData", ",", " ", "\"\<List\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.762972674766748*^9, 3.762972713235978*^9}, {
+  3.762974504148883*^9, 3.762974506017651*^9}, {3.762974536929182*^9, 
+  3.762974549031601*^9}},
+ CellLabel->
+  "In[211]:=",ExpressionUUID->"f15665b3-89a7-4c67-8317-10c0f5c084be"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"dVF", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y"}], "}"}], ",", 
+         RowBox[{"Normalize", "@", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Cos", "@", "x"}], ",", 
+            RowBox[{"Tan", "@", "y"}]}], "}"}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "1", ",", "3", ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", "1", ",", "3", ",", "1"}], "}"}]}], "]"}]}], ";", 
+    "\n", 
+    RowBox[{"theFlattened", "=", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"dVF", ",", "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", "theFlattened", "]"}], ";"}], "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"f", "=", 
+     RowBox[{"Interpolation", "[", "theFlattened", "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"VectorPlot", "[", 
+     RowBox[{
+      RowBox[{"f", "[", 
+       RowBox[{"x", ",", "y"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "1", ",", "3"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"y", ",", "1", ",", "3"}], "}"}]}], "]"}]}], "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"theFlattened", "=", "windData"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"theFlattened", "[", 
+      RowBox[{"[", "15", "]"}], "]"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f", "=", 
+     RowBox[{"Interpolation", "[", 
+      RowBox[{"Take", "[", 
+       RowBox[{"windData", ",", "15"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"VectorPlot", "[", 
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"x", ",", "y"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "125"}], ",", 
+       RowBox[{"-", "67"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", "23", ",", "50"}], "}"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7629728489199944`*^9, 3.7629728501975822`*^9}, {
+  3.762972928018079*^9, 3.76297304231954*^9}, {3.7629730770019073`*^9, 
+  3.762973230376616*^9}, {3.762973272317309*^9, 3.762973274861117*^9}, {
+  3.762973335299151*^9, 3.76297337718113*^9}, {3.76297345081466*^9, 
+  3.762973515856434*^9}, {3.7629735559141817`*^9, 3.762973584069972*^9}, {
+  3.7629736724089947`*^9, 3.76297378889163*^9}, {3.762973972651538*^9, 
+  3.762974047028619*^9}, {3.762974085149495*^9, 3.762974138608671*^9}},
+ CellLabel->
+  "In[205]:=",ExpressionUUID->"298ccd28-bfc5-41fc-99a9-87d2f439bf71"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"ListStreamPlot", "[", 
+    RowBox[{"windData", ",", 
+     RowBox[{"StreamColorFunction", "\[Rule]", "\"\<RustTones\>\""}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", "Automatic"}], ",", 
+     RowBox[{"StreamPoints", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Automatic", ",", ".05"}], "}"}]}], ",", 
+     RowBox[{"StreamStyle", "\[Rule]", "\"\<Drop\>\""}]}], "]"}], ",", 
+   "outline", ",", 
+   RowBox[{"ImageSize", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"1500", ",", "800"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.762971558573854*^9, 3.762971613595325*^9}, {
+  3.762971726417366*^9, 3.7629717955896463`*^9}, {3.76297187526882*^9, 
+  3.762971877404707*^9}, {3.762971948870167*^9, 3.7629719489900503`*^9}, {
+  3.762972004026073*^9, 3.762972028450141*^9}, {3.762972664897008*^9, 
+  3.762972665029254*^9}, {3.762972724506569*^9, 3.7629728040163383`*^9}, {
+  3.7629746061155033`*^9, 3.762974610904237*^9}},
+ CellLabel->
+  "In[213]:=",ExpressionUUID->"e5f317ad-661f-4577-9756-e5fa9f34bbaf"]
+},
+WindowSize->{1892, 1012},
+WindowMargins->{{Automatic, 1614}, {Automatic, 34}},
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3009, 81, 147, "Input",ExpressionUUID->"97c4507b-1a4b-479a-9719-331f84c29ee5"],
+Cell[3570, 103, 439, 9, 31, "Input",ExpressionUUID->"f15665b3-89a7-4c67-8317-10c0f5c084be"],
+Cell[4012, 114, 2694, 71, 262, "Input",ExpressionUUID->"298ccd28-bfc5-41fc-99a9-87d2f439bf71"],
+Cell[6709, 187, 1068, 22, 31, "Input",ExpressionUUID->"e5f317ad-661f-4577-9756-e5fa9f34bbaf"]
+}
+]
+*)
+
