@@ -15,14 +15,18 @@
 
 \usepackage{subcaption}
 
+\setbeamertemplate{caption}[numbered]
+
 \begin{document}
 \frame{\titlepage}
 \section{A Motivating Problem}
 
 \begin{frame}{Airlines}
-  \begin{itemize}
-    \item Time is fuel; fuel is money.
-  \end{itemize}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[keepaspectratio, width=.85\linewidth]{figures/airline2.png}
+    \caption{Mudd Air}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Airline}
@@ -82,128 +86,47 @@
   \vfill
 \end{frame}
 
-\section{Formalizing the Problem}
+\section{Defining the Problem}
 
-\begin{frame}{What's essential about this problem?}
-  \begin{itemize}
-    \item Object of interest: a path $\mb x(t) = (x(t), y(t), z(t))$.
-    \item Givens:
-      \begin{itemize}
-        \item Region we can fly over (Pacific Ocean)
-        \item Start/end points (Honolulu/Anchorage)
-        \item Drag function: $\mb F_D(t,\, \mb x(t),\, \mb{\dot{x}}(t))$
-      \end{itemize}
-    \item Goal: find $\mb x(t)$ minimizing \emph{total} travel time.\pause
-      \begin{itemize}
-        \item Important: total travel time is an ``accumulated cost''
-      \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Translating to the General Case}
-  \begin{columns}
-    \begin{column}{0.5\textwidth}
-      {\large Flight Optimization:}\\[.75em]
-      \begin{itemize}
-        \item Object of interest:
-          \begin{itemize}
-            \item Path $\mb x(t)$
-          \end{itemize}
-        \item Givens:
-          \begin{itemize}
-            \item Domain: region of globe
-            \item End points: HNL, ANC
-            \item Drag: $\mb F(t, \mb x(t),\ \mb v(t))$
-          \end{itemize}
-        \item Goal: find $\mb x(t)$ minimizing travel time
-      \end{itemize}
-    \end{column}\pause
-    \begin{column}{0.5\textwidth}
-      {\large General:}\\[.75em]
-      \begin{itemize}
-        \item Object of interest
-          \begin{itemize}
-            \item A path $\Qq : [t_0, t_f] \to X$
-          \end{itemize}
-        \item Givens:
-          \begin{itemize}
-            \item Domain: some space $X$
-            \item End points: $\Qq(t_0)$, $\Qq(t_f)$
-            \item Cost func: $\mc L(t, \Qq(t), \dot \Qq(t))$
-          \end{itemize}
-        \item
-      \end{itemize}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-% \begin{frame}{Abstracting}
-%   \begin{itemize}
-%     \item Givens:
-%       \begin{itemize}
-%         \item A space $X$ we can move through
-%         \item A ``cost function''
-%       \end{itemize}
-%   \end{itemize}
-% \end{frame}
-
-\section{Proof Sketch}
-
-\begin{frame}{Overview}
-  \begin{itemize}
-    \item We want to find some optimal path $\Qq(t)$ satisfying
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Wind}
+\begin{frame}{Big idea: find best path}
   \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio,height=5cm]{figures/vector-field.pdf}
-    \caption{Wind Vector Field}
+    \caption{Drag field}
     \label{fig:wind}
   \end{figure}
 \end{frame}
 
-\begin{frame}{``Cost'' function}
+\begin{frame}{Big idea, cont:}
   \begin{figure}[h]
+    \vfill
     \centering
-    \includegraphics[keepaspectratio,height=7cm]{figures/vect-to-scalar.pdf}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{Shortest Time Path}
-  \vfill
-  \begin{figure}[h]
-    \begin{tikzpicture}[scale=2]
-      \def\r{1} % radius
-      \def\c{1.4} % center
-      \coordinate (O) at (0,0);
-      \coordinate (A) at (0,2*\r);
-      \coordinate (B) at (pi, 0);
-
-      % Cycloid
-      \draw[red,domain=0:pi,samples=50] plot ({\x - sin(\x r)},{\r+cos(\x r)});
-
-      % Straight line
-      \draw[blue] (A) -- (B);
-
-      % The other two
-      \draw[green, domain=0:pi, samples=50] plot ({\x}, {(-2/pi)*(\x-pi)*exp(-4*\x)});
-      \draw[orange, domain=0:pi, samples=50] plot ({\x}, {(-2/pi)*(\x-pi)*exp(\x/3)});
-
-      % Release point
-      \draw[fill=black] (A) circle (.75pt);
-
-      % End point
-      \draw[fill=black] (B) circle (.75pt);
-
+    \definecolor{eek}{RGB}{255,255,255}
+    \begin{tikzpicture}[
+      scale=1.25,
+      declare function = {
+        a(\x, \y) = 3*(1-\x)^2 * exp(-(\x^2)-(\y+1)^2);
+        b(\x, \y) = -10*(\x/5 - \x^3 + \y^5) * exp(-\x^2 - \y^2);
+        c(\x, \y) = -exp(-(\x+1)^2 - \y^2)/3;
+        Z(\x, \y) = a(\x,\y) + b(\x,\y) + c(\x,\y);
+      }
+      ]
+      \begin{axis}[
+        view={225}{50},
+        hide x axis,
+        hide y axis,
+        hide z axis,
+        domain=-3.5:3.5,
+        samples=60,
+        ]
+        \addplot3 [surf] {Z(x,y)};
+      \end{axis}
     \end{tikzpicture}
+    \vfill
   \end{figure}
-  \vfill
 \end{frame}
 
-
-\begin{frame}{Shortest Path}
+\begin{frame}{Big idea, cont:}
   \begin{figure}[h]
     \vfill
     \centering
@@ -342,38 +265,130 @@
   \end{figure}
 \end{frame}
 
-\begin{frame}{The statement}
+
+\begin{frame}{What's essential about this problem?}
+  \begin{itemize}
+    \item Object of interest: a path $\Qq(t) = (x(t), y(t), z(t))$.
+    \item Givens:
+      \begin{itemize}
+        \item Region we can fly over (Pacific Ocean)
+        \item Start/end points: (Honolulu/Anchorage)
+        \item Drag: $\mb F_D(t,\, \Qq(t),\, \bm{\dot{q}}(t))$
+      \end{itemize}
+    \item Goal: find $\Qq(t)$ minimizing \emph{total} travel time.
+      % \begin{itemize}
+      %   \item Important: total travel time is an ``accumulated cost''
+      %   \item Let $\mc L(t,\, \mb x(t),\, \mb{\dot x}(t))$ encode the
+      %     ``cost'' of being
+      % \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Defining ``Cost''}
+  \begin{itemize}
+    \item Drag: $\mb F_D(t,\, \Qq(t), \bm{\dot{q}}(t))$
+    \item Define ``instantaneous cost'' function:
+      \[
+        \mc L(t,\, \Qq(t),\, \bm{\dot q}(t))
+      \]
+    \item Total ``cost'' of trip:
+      \[
+        C[\Qq] = \int_{t_0}^{t_1} \mc L(t,\, \Qq(t),\, \bm{\dot q}(t))
+        \dd t
+      \]
+    \item What we want: an analogue of the first derivative test
+  \end{itemize}
+\end{frame}
+
+
+
+
+% \begin{frame}{Translating to the General Case}
+%   \begin{columns}
+%     \begin{column}{0.5\textwidth}
+%       {\large Flight Optimization:}\\[.75em]
+%       \begin{itemize}
+%         \item Object of interest:
+%           \begin{itemize}
+%             \item Path $\mb x(t)$
+%           \end{itemize}
+%         \item Givens:
+%           \begin{itemize}
+%             \item Domain: region of globe
+%             \item End points: HNL, ANC
+%             \item Drag: $\mb F(t, \mb x(t),\ \mb v(t))$
+%           \end{itemize}
+%         \item Goal: find $\mb x(t)$ minimizing travel time
+%       \end{itemize}
+%     \end{column}\pause
+%     \begin{column}{0.5\textwidth}
+%       {\large General:}\\[.75em]
+%       \begin{itemize}
+%         \item Object of interest
+%           \begin{itemize}
+%             \item A path $\Qq : [t_0, t_f] \to X$
+%           \end{itemize}
+%         \item Givens:
+%           \begin{itemize}
+%             \item Domain: some space $X$
+%             \item End points: $\Qq(t_0)$, $\Qq(t_f)$
+%             \item Cost func: $\mc L(t, \Qq(t), \dot \Qq(t))$
+%           \end{itemize}
+%         \item
+%       \end{itemize}
+%     \end{column}
+%   \end{columns}
+% \end{frame}
+
+% \begin{frame}{Abstracting}
+%   \begin{itemize}
+%     \item Givens:
+%       \begin{itemize}
+%         \item A space $X$ we can move through
+%         \item A ``cost function''
+%       \end{itemize}
+%   \end{itemize}
+% \end{frame}
+
+% \section{Proof Sketch}
+
+\begin{frame}{Euler-Lagrange}
   \begin{theorem}[Euler-Lagrange]
     Let $\Qq(t) : \RR \to \RR^n$ be a path. Then if $\Qq(t)$ is an
     extreme value of the functional
     \[
-      S(\Qq) = \int_a^b \mc L\pn{t, \Qq(t), \dot{\Qq}(t)} \dd t
+      C[\Qq] = \int_{t_0}^{t_1} \mc L\pn{t, \Qq(t), \dot{\Qq}(t)} \dd
+      t
     \]
     then $\Qq$ is a solution to the differential equation
     \[
-      \pd{\mc L}{\Qq} - \od{}{t} \pn{\pd{\mc L}{\dot{\Qq}}} = 0
+      \pd{\mc L}{\Qq} - \od{}{t} \pn{\pd{\mc L}{\dot{\Qq}}} = 0.
     \]
   \end{theorem}
 \end{frame}
 
-\section{Examples}
+\section{Proof Sketch}
 
-\begin{frame}
+\begin{frame}{Suppose an optimal $\Qq(t)$ exists:}
   \begin{figure}[h]
     \centering
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale=1]
       \pgfmathsetmacro{\xmin}{-.2};
       \pgfmathsetmacro{\ymin}{-.2};
       \pgfmathsetmacro{\xmax}{6};
-      \pgfmathsetmacro{\ymax}{5};
+      \pgfmathsetmacro{\ymax}{4};
+
+      \pgfmathsetmacro{\qs}{1.56875};
+      \pgfmathsetmacro{\qf}{3.18126};
 
       \pgfmathsetmacro{\extraforaxes}{.2};
 
-      \pgfmathsetmacro{\epsilon}{.1};
+      \pgfmathsetmacro{\epsilon}{.06};
 
       \draw[->] (\xmin,0) -- (\xmax+\extraforaxes, 0) node[below] {$x$};
       \draw[->] (0,\ymin) -- (0, \ymax+\extraforaxes) node[left] {$y$};
 
+      % Optimal y
       \draw[domain=1.5:5.5, smooth, variable=\x, blue] plot ({\x-.5},
       {-1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x)});
 
@@ -393,14 +408,115 @@
       minimum size=5pt
       ] (y1) at (5, 3.18126) {};
 
-      % \draw[domain=\xmin:\xmax, smooth, variable=\x, blue] plot ({\x}, )
+      \node[below,yshift=-4pt] (t0) at (1, 0) {$t_0$};
+      \node[below,yshift=-4pt] (t1) at (5, 0) {$t_1$};
+      \draw[dotted] (y0) -- (1,0);
+      \draw[dotted] (y1) -- (5,0);
+      \draw (1,.08) -- (1,-.08);
+      \draw (5,.08) -- (5,-.08);
 
-      % \draw[scale=0.5,domain=-3:3,smooth,variable=\x,blue] plot ({\x}, {\x*\x});
-      % \draw[scale=0.5,domain=-3:3,smooth,variable=\y,red]  plot ({\y*\y}, {\y});
+      \node[left,xshift=-4pt] (q0) at (0,\qs) {$\Qq(t_0)$};
+      \node[left,xshift=-4pt] (qf) at (0,\qf) {$\Qq(t_f)$};
+      \draw[dotted] (0,\qs) -- (y0);
+      \draw[dotted] (0,\qf) -- (y1);
+      \draw (-.08,\qs) -- (.08,\qs);
+      \draw (-.08,\qf) -- (.08,\qf);
     \end{tikzpicture}
+    \caption{Optimal $\color{blue} \Qq(t)$}
   \end{figure}
 \end{frame}
 
+\begin{frame}{Suppose an optimal $\Qq(t)$ exists:}
+  \begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.15]
+      \pgfmathsetmacro{\xmin}{-.2};
+      \pgfmathsetmacro{\ymin}{-.2};
+      \pgfmathsetmacro{\xmax}{6};
+      \pgfmathsetmacro{\ymax}{4};
+
+      \pgfmathsetmacro{\qs}{1.56875};
+      \pgfmathsetmacro{\qf}{3.18126};
+
+      \pgfmathsetmacro{\extraforaxes}{.2};
+
+      \pgfmathsetmacro{\epsilon}{.06};
+
+      \draw[->] (\xmin,0) -- (\xmax+\extraforaxes, 0) node[below] {$x$};
+      \draw[->] (0,\ymin) -- (0, \ymax+\extraforaxes) node[left] {$y$};
+
+      % Optimal y
+      \draw[domain=1.5:5.5, smooth, variable=\x, blue] plot ({\x-.5},
+      {-1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x)});
+
+      % Perturbation
+      \draw[domain=1.5:5.5, smooth, variable=\x, dashed, red] plot ({\x-.5}, {-1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x) + \epsilon*((.5+2*sin(2*\x-2) * exp(2-1 * \x)) * (\x - 5.5) * (\x - 1.5))^2});
+
+      \node[
+      circle,
+      draw=black,
+      fill=white,
+      inner sep=0pt,
+      minimum size=5pt
+      ] (y0) at (1, 1.56875) {};
+
+      \node[
+      circle,
+      draw=black,
+      fill=white,
+      inner sep=0pt,
+      minimum size=5pt
+      ] (y1) at (5, 3.18126) {};
+
+      \node[below,yshift=-4pt] (t0) at (1, 0) {$t_0$};
+      \node[below,yshift=-4pt] (t1) at (5, 0) {$t_1$};
+      \draw[dotted] (y0) -- (1,0);
+      \draw[dotted] (y1) -- (5,0);
+      \draw (1,.08) -- (1,-.08);
+      \draw (5,.08) -- (5,-.08);
+
+      \node[left,xshift=-4pt] (q0) at (0,\qs) {$\Qq(t_0)$};
+      \node[left,xshift=-4pt] (qf) at (0,\qf) {$\Qq(t_f)$};
+      \draw[dotted] (0,\qs) -- (y0);
+      \draw[dotted] (0,\qf) -- (y1);
+      \draw (-.08,\qs) -- (.08,\qs);
+      \draw (-.08,\qf) -- (.08,\qf);
+
+    \end{tikzpicture}
+    \caption{Add a small perturbation ${\color{red}\varepsilon \cdot \bm \eta(t)}$}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Shortest Time Path}
+  \vfill
+  \begin{figure}[h]
+    \begin{tikzpicture}[scale=2]
+      \def\r{1} % radius
+      \def\c{1.4} % center
+      \coordinate (O) at (0,0);
+      \coordinate (A) at (0,2*\r);
+      \coordinate (B) at (pi, 0);
+
+      % Cycloid
+      \draw[red,domain=0:pi,samples=50] plot ({\x - sin(\x r)},{\r+cos(\x r)});
+
+      % Straight line
+      \draw[blue] (A) -- (B);
+
+      % The other two
+      \draw[green, domain=0:pi, samples=50] plot ({\x}, {(-2/pi)*(\x-pi)*exp(-4*\x)});
+      \draw[orange, domain=0:pi, samples=50] plot ({\x}, {(-2/pi)*(\x-pi)*exp(\x/3)});
+
+      % Release point
+      \draw[fill=black] (A) circle (.75pt);
+
+      % End point
+      \draw[fill=black] (B) circle (.75pt);
+
+    \end{tikzpicture}
+  \end{figure}
+  \vfill
+\end{frame}
 
 % \section{Bibliography}
 % \begin{frame}
