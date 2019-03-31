@@ -8,23 +8,93 @@
 \date{April 1st, 2018}
 
 \usepackage{fkmath}
+\usepackage{siunitx}
 \usepackage{animate}
 \usetikzlibrary{external}
-\tikzexternalize
+\tikzexternalize[prefix=figures/]
 
+\usepackage{subcaption}
 
 \begin{document}
 \frame{\titlepage}
-\section{Motivating Problems}
+\section{A Motivating Problem}
 
+\begin{frame}{Airlines}
+  \begin{itemize}
+    \item Time is fuel. Time is
+  \end{itemize}
+\end{frame}
 
+\begin{frame}{Airline}
+  \begin{figure}[h]
+    \centering
+%     \animategraphics[keepaspectratio,height=6cm,every=2]{20}{animations/straight/straight-}{0}{128}
+    \caption{Flight 1 (UPS9859), Saturday 03/23/2019}
+  \end{figure}
+\end{frame}
 
-% \begin{frame}{Airline}
-%   \begin{figure}[h]
-%     \centering
-%     \animategraphics[keepaspectratio,height=6cm]{20}{animations/side-by-side/side-by-side-}{0}{116}
-%   \end{figure}
-% \end{frame}
+\begin{frame}{Airline, cont.}
+  \begin{figure}[h]
+    \centering
+%     \animategraphics[keepaspectratio,height=6cm,every=2]{20}{animations/not-straight/not-straight-}{0}{115}
+    \caption{Flight 2 (FDX50252), Friday 03/22/2019}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Some statistics:}
+  \begin{itemize}
+    \item Total flight distance:
+      \begin{itemize}
+        \item Flight 1: $4551\si{\kilo\meter}$
+        \item Flight 2: $4670\si{\kilo\meter}$
+      \end{itemize}
+    \item Total flight time:
+      \begin{itemize}
+        \item Flight 1: 5h 30m 7s
+        \item Flight 2: 5h 14m 6s
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The difference:}
+  \vfill
+\end{frame}
+
+\begin{frame}{The difference:}
+  \vfill
+  \begin{figure}[h]
+    \centering
+  %   \animategraphics[keepaspectratio,height=5cm,every=3]{20}{animations/straight/straight-wind-result-}{0}{141}
+    \caption{Wind patterns at $70\mrm{hPa}$ during Flight 1}
+  \end{figure}
+  \vfill
+\end{frame}
+
+\begin{frame}{The difference:}
+  \vfill
+  \begin{figure}[h]
+    \centering
+  %   \animategraphics[keepaspectratio,height=5cm,every=3]{20}{animations/not-straight/not-straight-wind-result-}{0}{142}
+    \caption{Wind patterns at $70\mrm{hPa}$ during Flight 2}
+  \end{figure}
+  \vfill
+\end{frame}
+
+\section{Formalizing the Problem}
+
+\begin{frame}{Abstracting}
+  \begin{itemize}
+    \item
+  \end{itemize}
+\end{frame}
+
+\section{Proof Sketch}
+
+\begin{frame}{Overview}
+  \begin{itemize}
+    \item We want to find some optimal path $\Qq(t)$ satisfying
+  \end{itemize}
+\end{frame}
 
 \begin{frame}{Wind}
   \begin{figure}[h]
@@ -35,7 +105,7 @@
   \end{figure}
 \end{frame}
 
-\begin{frame}{Underlying Scalar Function}
+\begin{frame}{``Cost'' function}
   \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio,height=7cm]{figures/vect-to-scalar.pdf}
@@ -103,10 +173,7 @@
           1.5 2 -.558409 \\
           -.5 -1.5 10.2248 \\
         };
-
         \addplot3 [color=eek, line width=.3mm] table[row sep=crcr] {
-
-
           x y z\\
           1.5 2. -0.558409\\
           1.51642 1.94419 -0.563117\\
@@ -158,7 +225,6 @@
           0.47374 0.404291 0.000850495\\
           0.463844 0.363518 0.010356\\
           0.456166 0.321477 0.0193537\\
-
           0.450241 0.278434 0.0280568\\
           0.445477 0.234727 0.0366758\\
           0.441231 0.190725 0.0453312\\
@@ -217,12 +283,6 @@
   \end{figure}
 \end{frame}
 
-% Function:
-% z = 3 * (1-x)^2 * exp(-(x^2) - (y+1)^2) - 10 * (x/5 - x^3 - y^5) * exp(-x^2 -
-% y^2) - 1/3 * exp(-(x+1)^2 - y^2)
-
-
-
 \begin{frame}{The statement}
   \begin{theorem}[Euler-Lagrange]
     Let $\Qq(t) : \RR \to \RR^n$ be a path. Then if $\Qq(t)$ is an
@@ -237,7 +297,7 @@
   \end{theorem}
 \end{frame}
 
-\section{Proof Sketch}
+\section{Examples}
 
 \begin{frame}
   \begin{figure}[h]

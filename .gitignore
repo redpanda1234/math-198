@@ -18,6 +18,7 @@
 *.png
 *.gif
 *.anim
+technical-talk/figures/kobayashi_*
 !technical-talk/side-by-side/side-by-side-wind_anim.gif
 !technical-talk/side-by-side/side-by-side.gif
 technical-talk/scripts/pgf_string.txt
