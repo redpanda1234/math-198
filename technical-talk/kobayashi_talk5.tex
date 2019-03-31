@@ -1,6 +1,6 @@
 \documentclass{fkpresentation}
 
-\setcounter{errorcontextlines}{999}
+% \setcounter{errorcontextlines}{999}
 % Information to be included in the title page:
 \title{\textmd{The Euler-Lagrange Equation}}
 \author{Forest Kobayashi}
@@ -25,65 +25,17 @@
   \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio, width=.85\linewidth]{figures/airline2.png}
-    \caption{Mudd Air}
+    \caption{Mudd Air; Image adapted from \cite{Airplane}}
   \end{figure}
 \end{frame}
 
-\begin{frame}{Airline}
-  \begin{figure}[h]
-    \centering
-%     \animategraphics[keepaspectratio,height=6cm,every=2]{20}{animations/straight/straight-}{0}{128}
-    \caption{Flight 1 (UPS9859), Saturday 03/23/2019}
-  \end{figure}
-\end{frame}
+\include{airline-animations}
 
-\begin{frame}{Airline, cont.}
-  \begin{figure}[h]
-    \centering
-%     \animategraphics[keepaspectratio,height=6cm,every=2]{20}{animations/not-straight/not-straight-}{0}{115}
-    \caption{Flight 2 (FDX50252), Friday 03/22/2019}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{Some statistics:}
-  \begin{itemize}
-    \item Total flight distance:
-      \begin{itemize}
-        \item Flight 1: $4551\si{\kilo\meter}$
-        \item Flight 2: $4670\si{\kilo\meter}$
-      \end{itemize}
-    \item Total flight time:
-      \begin{itemize}
-        \item Flight 1: 5h 30min 7s
-        \item Flight 2: 5h 14min 6s
-      \end{itemize}
-    \item Flight 2 went $\sim 100 \si{\kilo\meter}$ further, but arrived $\sim
-      15$ faster!
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{The difference:}
-  \vfill
-\end{frame}
-
-\begin{frame}{The difference:}
-  \vfill
-  \begin{figure}[h]
-    \centering
-  %   \animategraphics[keepaspectratio,height=5cm,every=3]{20}{animations/straight/straight-wind-result-}{0}{141}
-    \caption{Wind patterns at $70\mrm{hPa}$ during Flight 1}
-  \end{figure}
-  \vfill
-\end{frame}
-
-\begin{frame}{The difference:}
-  \vfill
-  \begin{figure}[h]
-    \centering
-  %   \animategraphics[keepaspectratio,height=5cm,every=3]{20}{animations/not-straight/not-straight-wind-result-}{0}{142}
-    \caption{Wind patterns at $70\mrm{hPa}$ during Flight 2}
-  \end{figure}
-  \vfill
+\begin{frame}{Question:}
+  \begin{center}
+    \Huge
+    How do airlines calculate the best trajectory?
+  \end{center}
 \end{frame}
 
 \section{Defining the Problem}
@@ -103,7 +55,7 @@
     \centering
     \definecolor{eek}{RGB}{255,255,255}
     \begin{tikzpicture}[
-      scale=1.25,
+      scale=1.5,
       declare function = {
         a(\x, \y) = 3*(1-\x)^2 * exp(-(\x^2)-(\y+1)^2);
         b(\x, \y) = -10*(\x/5 - \x^3 + \y^5) * exp(-\x^2 - \y^2);
@@ -352,15 +304,16 @@
 
 % \section{Proof Sketch}
 
-\begin{frame}{Euler-Lagrange}
+\begin{frame}{Solution: Euler-Lagrange}
   \begin{theorem}[Euler-Lagrange]
-    Let $\Qq(t) : \RR \to \RR^n$ be a path. Then if $\Qq(t)$ is an
-    extreme value of the functional
+    Let $X$ be our space of interest, and let $\Xx_0$, $\Xx_1 \in X$.
+    Let $\Qq(t)$ be a path between $\Xx_0$ an $\Xx_1$. Then if
+    $\Qq(t)$ minimizes the ``total cost function''
     \[
-      C[\Qq] = \int_{t_0}^{t_1} \mc L\pn{t, \Qq(t), \dot{\Qq}(t)} \dd
-      t
+      C[\Qq(t)] = \int_{t_0}^{t_1} \mc L\pn{t, \Qq(t), \dot{\Qq}(t)} \dd
+      t,
     \]
-    then $\Qq$ is a solution to the differential equation
+    $\Qq(t)$ is a solution to the differential equation
     \[
       \pd{\mc L}{\Qq} - \od{}{t} \pn{\pd{\mc L}{\dot{\Qq}}} = 0.
     \]
@@ -368,11 +321,38 @@
 \end{frame}
 
 \section{Proof Sketch}
-
-\begin{frame}{Suppose an optimal $\Qq(t)$ exists:}
+\begin{frame}{Overview:}
+  \begin{enumerate}
+    \item Suppose an optimal $\color{blue} \Qq(t)$ exists.
+    \item Take a non-zero path $\color{red} \bm \eta(t)$, with
+      ${\color{red}\eta(t_0)} = 0 = {\color{red}\eta(t_f)}$.
+    \item For all ${\color{red}\alpha} \neq 0$, the path $\bm{q'}(t) =
+      {\color{blue} \Qq(t)} + {\color{red} \alpha \cdot \bm{\eta}(t)}$
+      is not optimal.
+    \item Thus, $C[\Qq'(t)]$ is minimized when $\color{red}\alpha =
+      0$.
+    \item Applying the first derivative test in $\color{red} \alpha$,
+      we can show
+      \[
+        \od{C}{{\color{red}\alpha}} \bigg\vert_{{\color{red}\alpha}=0}
+        = \int_{t_0}^{t_1} \bk{\pd{\mc L}{\color{blue} \Qq} -
+          \od{}{t}\pn{\pd{\mc L}{\color{blue} \bm{\dot q}}}}
+        {\color{red}\eta(t)} \dd t = 0
+      \]
+      and the result follows.
+  \end{enumerate}
+\end{frame}
+\begin{frame}{Suppose an optimal $\color{blue}\Qq(t)$ exists:}
   \begin{figure}[h]
     \centering
-    \begin{tikzpicture}[scale=1]
+    \begin{tikzpicture}[scale=1.15,
+      declare function = {
+        epsilon(\x) = .06;
+        fopt(\x) = -1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x);
+        eta(\x) = epsilon(0)*((.5+2*sin(2*\x-2) * exp(2-1 * \x)) * (\x - 5.5) * (\x - 1.5))^2;
+        fprime(\x) = fopt(\x) + eta(\x);
+      }
+      ]
       \pgfmathsetmacro{\xmin}{-.2};
       \pgfmathsetmacro{\ymin}{-.2};
       \pgfmathsetmacro{\xmax}{6};
@@ -389,8 +369,9 @@
       \draw[->] (0,\ymin) -- (0, \ymax+\extraforaxes) node[left] {$y$};
 
       % Optimal y
-      \draw[domain=1.5:5.5, smooth, variable=\x, blue] plot ({\x-.5},
-      {-1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x)});
+      \draw[domain=1.5:5.5, smooth, variable=\x, blue] plot ({\x-.5}, {fopt(\x)});
+
+      \node[below right] at (4.25, 2.75) {$\color{blue} \bm{q}(t)$};
 
       \node[
       circle,
@@ -415,8 +396,8 @@
       \draw (1,.08) -- (1,-.08);
       \draw (5,.08) -- (5,-.08);
 
-      \node[left,xshift=-4pt] (q0) at (0,\qs) {$\Qq(t_0)$};
-      \node[left,xshift=-4pt] (qf) at (0,\qf) {$\Qq(t_f)$};
+      \node[left,xshift=-4pt] (q0) at (0,\qs) {$\color{blue}\Qq(t_0)$};
+      \node[left,xshift=-4pt] (qf) at (0,\qf) {$\color{blue}\Qq(t_f)$};
       \draw[dotted] (0,\qs) -- (y0);
       \draw[dotted] (0,\qf) -- (y1);
       \draw (-.08,\qs) -- (.08,\qs);
@@ -426,10 +407,17 @@
   \end{figure}
 \end{frame}
 
-\begin{frame}{Suppose an optimal $\Qq(t)$ exists:}
+\begin{frame}{For some $\color{red} \bm{\eta}(t)$, add $\color{red}\alpha \cdot \bm{\eta}(t)$:}
   \begin{figure}[h]
     \centering
-    \begin{tikzpicture}[scale=1.15]
+    \begin{tikzpicture}[scale=1.15,
+      declare function = {
+        epsilon(\x) = .06;
+        fopt(\x) = -1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x);
+        eta(\x) = epsilon(0)*((.5+2*sin(2*\x-2) * exp(2-1 * \x)) * (\x - 5.5) * (\x - 1.5))^2;
+        fprime(\x) = fopt(\x) + eta(\x);
+      }
+      ]
       \pgfmathsetmacro{\xmin}{-.2};
       \pgfmathsetmacro{\ymin}{-.2};
       \pgfmathsetmacro{\xmax}{6};
@@ -446,11 +434,11 @@
       \draw[->] (0,\ymin) -- (0, \ymax+\extraforaxes) node[left] {$y$};
 
       % Optimal y
-      \draw[domain=1.5:5.5, smooth, variable=\x, blue] plot ({\x-.5},
-      {-1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x)});
+      \draw[domain=1.5:5.5, smooth, variable=\x, blue] plot ({\x-.5}, {fopt(\x)});
 
       % Perturbation
-      \draw[domain=1.5:5.5, smooth, variable=\x, dashed, red] plot ({\x-.5}, {-1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x) + \epsilon*((.5+2*sin(2*\x-2) * exp(2-1 * \x)) * (\x - 5.5) * (\x - 1.5))^2});
+      \draw[domain=1.5:5.5, smooth, variable=\x, densely dotted, thick] plot ({\x-.5}, {fprime(\x)});
+      \draw[domain=1.5:5.5, smooth, variable=\x, red] plot ({\x-.5}, {eta(\x)});
 
       \node[
       circle,
@@ -468,6 +456,11 @@
       minimum size=5pt
       ] (y1) at (5, 3.18126) {};
 
+      \node[above] at (3,.3) {$\color{red} \alpha \cdot \bm{\eta}(t)$};
+      \node[below right] at (4.25, 2.75) {$\color{blue} \bm{q}(t)$};
+      \node[above left] at (2.6,2.68) {$\bm{q'}(t)$};
+
+
       \node[below,yshift=-4pt] (t0) at (1, 0) {$t_0$};
       \node[below,yshift=-4pt] (t1) at (5, 0) {$t_1$};
       \draw[dotted] (y0) -- (1,0);
@@ -475,18 +468,70 @@
       \draw (1,.08) -- (1,-.08);
       \draw (5,.08) -- (5,-.08);
 
-      \node[left,xshift=-4pt] (q0) at (0,\qs) {$\Qq(t_0)$};
-      \node[left,xshift=-4pt] (qf) at (0,\qf) {$\Qq(t_f)$};
+      \node[left,xshift=-4pt] (q0) at (0,\qs) {$\color{blue}\Qq(t_0)$};
+      \node[left,xshift=-4pt] (qf) at (0,\qf) {$\color{blue}\Qq(t_f)$};
       \draw[dotted] (0,\qs) -- (y0);
       \draw[dotted] (0,\qf) -- (y1);
       \draw (-.08,\qs) -- (.08,\qs);
       \draw (-.08,\qf) -- (.08,\qf);
 
     \end{tikzpicture}
-    \caption{Add a small perturbation ${\color{red}\varepsilon \cdot \bm \eta(t)}$}
+    \caption{Add a small perturbation ${\color{red}\alpha \cdot \bm \eta(t)}$}
   \end{figure}
 \end{frame}
 
+\begin{frame}{$\Qq'(t)$ for various values of $\color{red} \alpha$:}
+  \vfill
+  \begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.75,
+      declare function = {
+        fopt(\x) = -1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x);
+        eta(\x,\alpha) = \alpha*((.5+2*sin(2*\x-2) * exp(2-1 * \x)) * (\x - 5.5) * (\x - 1.5))^2;
+        fprime(\x,\alpha) = fopt(\x) + eta(\x,\alpha);
+      }
+      ]
+      \pgfmathsetmacro{\xmin}{-.2};
+      \pgfmathsetmacro{\ymin}{-.2};
+      \pgfmathsetmacro{\xmax}{6};
+      \pgfmathsetmacro{\ymax}{4};
+
+      \pgfmathsetmacro{\qs}{1.56875};
+      \pgfmathsetmacro{\qf}{3.18126};
+
+      \pgfmathsetmacro{\extraforaxes}{.2};
+
+      \pgfmathsetmacro{\epsilon}{.06};
+
+      % Optimal y
+      \draw[domain=1.5:5.5, smooth, variable=\x, blue, very thick] plot ({\x-.5}, {fopt(\x)});
+
+      % Perturbation
+      \foreach \alpha/\thecolor in {0.2/red!90!blue,0.15/red!70!blue,0.2/red!50!blue,0.1/red!40!blue}{
+        \draw[domain=1.5:5.5, smooth, variable=\x,\thecolor] plot ({\x-.5}, {fprime(\x,\alpha)});
+        \draw[domain=1.5:5.5, smooth, variable=\x,\thecolor] plot ({\x-.5}, {fprime(\x,-1*\alpha)});
+      }
+      \node[
+      circle,
+      draw=black,
+      fill=white,
+      inner sep=0pt,
+      minimum size=5pt
+      ] (y0) at (1, 1.56875) {};
+
+      \node[
+      circle,
+      draw=black,
+      fill=white,
+      inner sep=0pt,
+      minimum size=5pt
+      ] (y1) at (5, 3.18126) {};
+
+    \end{tikzpicture}
+    \caption{Add a small perturbation ${\color{red}\alpha \cdot \bm \eta(t)}$}
+  \end{figure}
+  \vfill
+\end{frame}
 \begin{frame}{Shortest Time Path}
   \vfill
   \begin{figure}[h]
@@ -518,13 +563,13 @@
   \vfill
 \end{frame}
 
-% \section{Bibliography}
-% \begin{frame}
-%   \frametitle{References}
-%   \bibliographystyle{alpha}
-%   %   \bibliographystyle{IEEE}
-%   \bibliography{aha.bib}
-% \end{frame}
+\section{Bibliography}
+\begin{frame}
+  \frametitle{References}
+  \bibliographystyle{alpha}
+  % \bibliographystyle{IEEE}
+  \bibliography{talk5.bib}
+\end{frame}
 
 \end{document}
 
