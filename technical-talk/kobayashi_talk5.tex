@@ -32,10 +32,12 @@
 \include{airline-animations}
 
 \begin{frame}{Question:}
+  \vfill
   \begin{center}
     \Huge
     How do airlines calculate the best trajectory?
   \end{center}
+  \vfill
 \end{frame}
 
 \section{Defining the Problem}
@@ -307,8 +309,8 @@
 \begin{frame}{Solution: Euler-Lagrange}
   \begin{theorem}[Euler-Lagrange]
     Let $X$ be our space of interest, and let $\Xx_0$, $\Xx_1 \in X$.
-    Let $\Qq(t)$ be a path between $\Xx_0$ an $\Xx_1$. Then if
-    $\Qq(t)$ minimizes the ``total cost function''
+    Let $\Qq(t)$ be a path from $\Xx_0$ to $\Xx_1$. Then if $\Qq(t)$
+    minimizes the ``total cost function''
     \[
       C[\Qq(t)] = \int_{t_0}^{t_1} \mc L\pn{t, \Qq(t), \dot{\Qq}(t)} \dd
       t,
@@ -321,7 +323,7 @@
 \end{frame}
 
 \section{Proof Sketch}
-\begin{frame}{Overview:}
+\begin{frame}{Overview (don't sweat the details):}
   \begin{enumerate}
     \item Suppose an optimal $\color{blue} \Qq(t)$ exists.
     \item Take a non-zero path $\color{red} \bm \eta(t)$, with
@@ -481,10 +483,10 @@
 \end{frame}
 
 \begin{frame}{$\Qq'(t)$ for various values of $\color{red} \alpha$:}
-  \vfill
   \begin{figure}[h]
     \centering
-    \begin{tikzpicture}[scale=1.75,
+    \begin{tikzpicture}[%
+      scale=2, %
       declare function = {
         fopt(\x) = -1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x);
         eta(\x,\alpha) = \alpha*((.5+2*sin(2*\x-2) * exp(2-1 * \x)) * (\x - 5.5) * (\x - 1.5))^2;
@@ -507,7 +509,13 @@
       \draw[domain=1.5:5.5, smooth, variable=\x, blue, very thick] plot ({\x-.5}, {fopt(\x)});
 
       % Perturbation
-      \foreach \alpha/\thecolor in {0.2/red!90!blue,0.15/red!70!blue,0.2/red!50!blue,0.1/red!40!blue}{
+      \foreach \alpha/\thecolor in {%
+        0.25/red,%
+        0.20/red!80!blue,%
+        0.15/red!60!blue,%
+        0.10/red!40!blue,%
+        0.05/red!20!blue%
+      }{
         \draw[domain=1.5:5.5, smooth, variable=\x,\thecolor] plot ({\x-.5}, {fprime(\x,\alpha)});
         \draw[domain=1.5:5.5, smooth, variable=\x,\thecolor] plot ({\x-.5}, {fprime(\x,-1*\alpha)});
       }
@@ -528,11 +536,47 @@
       ] (y1) at (5, 3.18126) {};
 
     \end{tikzpicture}
-    \caption{Add a small perturbation ${\color{red}\alpha \cdot \bm \eta(t)}$}
+    \caption{$\bm{q'}(t)$ for various values of $\color{red}\alpha$}
   \end{figure}
   \vfill
 \end{frame}
-\begin{frame}{Shortest Time Path}
+
+\begin{frame}{Turn $C$ into optimizing a 1-D function:}
+  \begin{itemize}
+    \item Consider $C[\bm{q'}(t)]$ as a function of just $\color{red}
+      \alpha$:
+      \[
+        C'({\color{red}\alpha})
+        = C\bk{{\color{blue}\bm{q}(t)} + {\color{red}\alpha \cdot
+            \bm{\eta}(t)}}.
+      \]
+      This is just a map from $\RR\to \RR$!
+    \item Note that $C'({\color{red} 0}) = C[{\color{blue} \Qq(t)}]$,
+      so
+      \[
+        0 = \od{C'({\color{red} \alpha})}{\color{red}\alpha}
+        \bigg\vert_{{\color{red}\alpha} = 0}
+      \]
+    \item Repeated application of the chain rule and integration by
+      parts yields the desired result!
+  \end{itemize}
+\end{frame}
+
+
+
+\section{Other examples}
+
+\begin{frame}{Examples}
+  \begin{itemize}
+    \item Lagrangian Mechanics
+    \item Brachistochrone problem
+    \item Optimal control
+    \item Geodesics
+    \item Minimal surfaces of revolution
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Brachistochrone}
   \vfill
   \begin{figure}[h]
     \begin{tikzpicture}[scale=2]
