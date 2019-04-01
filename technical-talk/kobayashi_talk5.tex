@@ -25,7 +25,7 @@
   \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio, width=.85\linewidth]{figures/airline2.png}
-    \caption{Mudd Air; Image adapted from \cite{Airplane}}
+    \caption{Mudd Air (adapted from \cite{Airplane})}
   \end{figure}
 \end{frame}
 
@@ -42,6 +42,20 @@
 
 \section{Defining the Problem}
 
+\begin{frame}{Key Features:}
+  \begin{itemize}
+    \item Object of interest: a path $\Qq(t) = (x(t), y(t), z(t))$.
+    \item Givens:
+      \begin{itemize}
+        \item A region $X \subset \RR^3$ we can fly through (Pacific
+          Ocean airspace)
+        \item Start/end points $\Xx_0, \Xx_1$ (Honolulu/Anchorage)
+        \item Drag: $\mb F_D(t,\, \Qq(t),\, \bm{\dot{q}}(t))$
+      \end{itemize}
+    \item Goal: find $\Qq(t)$ minimizing \emph{total} travel time.
+  \end{itemize}
+\end{frame}
+
 \begin{frame}{Big idea: find best path}
   \begin{figure}[h]
     \centering
@@ -49,6 +63,23 @@
     \caption{Drag field}
     \label{fig:wind}
   \end{figure}
+\end{frame}
+
+\begin{frame}{Defining ``Cost''}
+  \begin{itemize}
+    \item Again: drag is given by $\mb F_D(t,\, \Qq(t),
+      \bm{\dot{q}}(t))$
+    \item Define ``instantaneous cost'' function:
+      \[
+        \mc L(t,\, \Qq(t),\, \bm{\dot q}(t))
+      \]
+    \item Then define the total ``cost'' of trip:
+      \[
+        C[\Qq] = \int_{t_0}^{t_1} \mc L(t,\, \Qq(t),\, \bm{\dot q}(t))
+        \dd t
+      \]
+    \item What we want: an analogue of the first derivative test
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Big idea, cont:}
@@ -220,42 +251,6 @@
 \end{frame}
 
 
-\begin{frame}{What's essential about this problem?}
-  \begin{itemize}
-    \item Object of interest: a path $\Qq(t) = (x(t), y(t), z(t))$.
-    \item Givens:
-      \begin{itemize}
-        \item Region we can fly over (Pacific Ocean)
-        \item Start/end points: (Honolulu/Anchorage)
-        \item Drag: $\mb F_D(t,\, \Qq(t),\, \bm{\dot{q}}(t))$
-      \end{itemize}
-    \item Goal: find $\Qq(t)$ minimizing \emph{total} travel time.
-      % \begin{itemize}
-      %   \item Important: total travel time is an ``accumulated cost''
-      %   \item Let $\mc L(t,\, \mb x(t),\, \mb{\dot x}(t))$ encode the
-      %     ``cost'' of being
-      % \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Defining ``Cost''}
-  \begin{itemize}
-    \item Drag: $\mb F_D(t,\, \Qq(t), \bm{\dot{q}}(t))$
-    \item Define ``instantaneous cost'' function:
-      \[
-        \mc L(t,\, \Qq(t),\, \bm{\dot q}(t))
-      \]
-    \item Total ``cost'' of trip:
-      \[
-        C[\Qq] = \int_{t_0}^{t_1} \mc L(t,\, \Qq(t),\, \bm{\dot q}(t))
-        \dd t
-      \]
-    \item What we want: an analogue of the first derivative test
-  \end{itemize}
-\end{frame}
-
-
-
 
 % \begin{frame}{Translating to the General Case}
 %   \begin{columns}
@@ -323,25 +318,24 @@
 \end{frame}
 
 \section{Proof Sketch}
-\begin{frame}{Overview (don't sweat the details):}
+\begin{frame}{Overview:}
   \begin{enumerate}
     \item Suppose an optimal $\color{blue} \Qq(t)$ exists.
-    \item Take a non-zero path $\color{red} \bm \eta(t)$, with
-      ${\color{red}\eta(t_0)} = 0 = {\color{red}\eta(t_f)}$.
-    \item For all ${\color{red}\alpha} \neq 0$, the path $\bm{q'}(t) =
-      {\color{blue} \Qq(t)} + {\color{red} \alpha \cdot \bm{\eta}(t)}$
-      is not optimal.
-    \item Thus, $C[\Qq'(t)]$ is minimized when $\color{red}\alpha =
-      0$.
-    \item Applying the first derivative test in $\color{red} \alpha$,
-      we can show
+    \item Add some perturbation $\color{red} \alpha \cdot
+      \bm{\eta}(t)$ to get a non-optimal $\bm{q'}(t)$.
+    \item $C[\Qq'(t)]$ is minimized when $\color{red}\alpha = 0$.
+    \item Hence, differentiating in $\color{red} \alpha$, we can show
       \[
         \od{C}{{\color{red}\alpha}} \bigg\vert_{{\color{red}\alpha}=0}
         = \int_{t_0}^{t_1} \bk{\pd{\mc L}{\color{blue} \Qq} -
           \od{}{t}\pn{\pd{\mc L}{\color{blue} \bm{\dot q}}}}
         {\color{red}\eta(t)} \dd t = 0
       \]
-      and the result follows.
+    \item It follows that
+      \[
+        \boxed{\pd{\mc L}{\color{blue} \Qq} - \od{}{t}\pn{\pd{\mc
+              L}{\color{blue} \bm{\dot q}}} = 0}
+      \]
   \end{enumerate}
 \end{frame}
 \begin{frame}{Suppose an optimal $\color{blue}\Qq(t)$ exists:}
@@ -482,7 +476,8 @@
   \end{figure}
 \end{frame}
 
-\begin{frame}{$\Qq'(t)$ for various values of $\color{red} \alpha$:}
+\begin{frame}{For smaller $\color{red} \alpha$, $\bm{q'}(t)$ closer to
+  optimal:}
   \begin{figure}[h]
     \centering
     \begin{tikzpicture}[%
@@ -568,11 +563,10 @@
 
 \begin{frame}{Examples}
   \begin{itemize}
-    \item Lagrangian Mechanics
-    \item Brachistochrone problem
     \item Optimal control
-    \item Geodesics
-    \item Minimal surfaces of revolution
+    \item Geodeseics \& Minimal surfaces of revolution
+    \item Lagrangian Mechanics: $\mc L = T - V$
+    \item Brachistochrone problem
   \end{itemize}
 \end{frame}
 
