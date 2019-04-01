@@ -5,7 +5,7 @@
 \title{\textmd{The Euler-Lagrange Equation}}
 \author{Forest Kobayashi}
 \institute{Harvey Mudd College}
-\date{April 1st, 2018}
+\date{April 1st, 2019}
 
 \usepackage{fkmath}
 \usepackage{siunitx}
@@ -47,22 +47,13 @@
     \item Object of interest: a path $\Qq(t) = (x(t), y(t), z(t))$.
     \item Givens:
       \begin{itemize}
+        \item Start/end points $\Xx_0, \Xx_1$ (Honolulu/Anchorage)
         \item A region $X \subset \RR^3$ we can fly through (Pacific
           Ocean airspace)
-        \item Start/end points $\Xx_0, \Xx_1$ (Honolulu/Anchorage)
         \item Drag: $\mb F_D(t,\, \Qq(t),\, \bm{\dot{q}}(t))$
       \end{itemize}
     \item Goal: find $\Qq(t)$ minimizing \emph{total} travel time.
   \end{itemize}
-\end{frame}
-
-\begin{frame}{Big idea: find best path}
-  \begin{figure}[h]
-    \centering
-    \includegraphics[keepaspectratio,height=5cm]{figures/vector-field.pdf}
-    \caption{Drag field}
-    \label{fig:wind}
-  \end{figure}
 \end{frame}
 
 \begin{frame}{Defining ``Cost''}
@@ -80,6 +71,277 @@
       \]
     \item What we want: an analogue of the first derivative test
   \end{itemize}
+\end{frame}
+
+\section{Proof Sketch}
+% \begin{frame}{Overview:}
+%   \begin{enumerate}
+%     \item Suppose an optimal $\color{blue} \Qq(t)$ exists.
+%     \item Add some perturbation $\color{red} \alpha \cdot
+%       \bm{\eta}(t)$ to get a non-optimal $\bm{q'}(t)$.
+%     \item $C[\Qq'(t)]$ is minimized when $\color{red}\alpha = 0$.
+%     \item Hence, differentiating in $\color{red} \alpha$, we can show
+%       \[
+%         \od{C}{{\color{red}\alpha}} \bigg\vert_{{\color{red}\alpha}=0}
+%         = \int_{t_0}^{t_1} \bk{\pd{\mc L}{\color{blue} \Qq} -
+%           \od{}{t}\pn{\pd{\mc L}{\color{blue} \bm{\dot q}}}}
+%         {\color{red}\eta(t)} \dd t = 0
+%       \]
+%     \item It follows that
+%       \[
+%         \boxed{\pd{\mc L}{\color{blue} \Qq} - \od{}{t}\pn{\pd{\mc
+%               L}{\color{blue} \bm{\dot q}}} = 0}
+%       \]
+%   \end{enumerate}
+% \end{frame}
+\begin{frame}{Suppose an optimal $\color{blue}\Qq(t)$ exists:}
+  \begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.15,
+      declare function = {
+        epsilon(\x) = .06;
+        fopt(\x) = -1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x);
+        eta(\x) = epsilon(0)*((.5+2*sin(2*\x-2) * exp(2-1 * \x)) * (\x - 5.5) * (\x - 1.5))^2;
+        fprime(\x) = fopt(\x) + eta(\x);
+      }
+      ]
+      \pgfmathsetmacro{\xmin}{-.2};
+      \pgfmathsetmacro{\ymin}{-.2};
+      \pgfmathsetmacro{\xmax}{6};
+      \pgfmathsetmacro{\ymax}{4};
+
+      \pgfmathsetmacro{\qs}{1.56875};
+      \pgfmathsetmacro{\qf}{3.18126};
+
+      \pgfmathsetmacro{\extraforaxes}{.2};
+
+      \pgfmathsetmacro{\epsilon}{.06};
+
+      \draw[->] (\xmin,0) -- (\xmax+\extraforaxes, 0) node[below] {$x$};
+      \draw[->] (0,\ymin) -- (0, \ymax+\extraforaxes) node[left] {$y$};
+
+      % Optimal y
+      \draw[domain=1.5:5.5, smooth, variable=\x, blue] plot ({\x-.5}, {fopt(\x)});
+
+      \node[below right] at (4.25, 2.75) {$\color{blue} \bm{q}(t)$};
+
+      \node[
+      circle,
+      draw=black,
+      fill=white,
+      inner sep=0pt,
+      minimum size=5pt
+      ] (y0) at (1, 1.56875) {};
+
+      \node[
+      circle,
+      draw=black,
+      fill=white,
+      inner sep=0pt,
+      minimum size=5pt
+      ] (y1) at (5, 3.18126) {};
+
+      \node[below,yshift=-4pt] (t0) at (1, 0) {$t_0$};
+      \node[below,yshift=-4pt] (t1) at (5, 0) {$t_1$};
+      \draw[dotted] (y0) -- (1,0);
+      \draw[dotted] (y1) -- (5,0);
+      \draw (1,.08) -- (1,-.08);
+      \draw (5,.08) -- (5,-.08);
+
+      \node[left,xshift=-4pt] (q0) at (0,\qs) {$\color{blue}\Qq(t_0)$};
+      \node[left,xshift=-4pt] (qf) at (0,\qf) {$\color{blue}\Qq(t_f)$};
+      \draw[dotted] (0,\qs) -- (y0);
+      \draw[dotted] (0,\qf) -- (y1);
+      \draw (-.08,\qs) -- (.08,\qs);
+      \draw (-.08,\qf) -- (.08,\qf);
+    \end{tikzpicture}
+    \caption{Optimal $\color{blue} \Qq(t)$}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{For some $\color{red} \bm{\eta}(t)$, add $\color{red}\alpha \cdot \bm{\eta}(t)$:}
+  \begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1.15,
+      declare function = {
+        epsilon(\x) = .06;
+        fopt(\x) = -1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x);
+        eta(\x) = epsilon(0)*((.5+2*sin(2*\x-2) * exp(2-1 * \x)) * (\x - 5.5) * (\x - 1.5))^2;
+        fprime(\x) = fopt(\x) + eta(\x);
+      }
+      ]
+      \pgfmathsetmacro{\xmin}{-.2};
+      \pgfmathsetmacro{\ymin}{-.2};
+      \pgfmathsetmacro{\xmax}{6};
+      \pgfmathsetmacro{\ymax}{4};
+
+      \pgfmathsetmacro{\qs}{1.56875};
+      \pgfmathsetmacro{\qf}{3.18126};
+
+      \pgfmathsetmacro{\extraforaxes}{.2};
+
+      \pgfmathsetmacro{\epsilon}{.06};
+
+      \draw[->] (\xmin,0) -- (\xmax+\extraforaxes, 0) node[below] {$x$};
+      \draw[->] (0,\ymin) -- (0, \ymax+\extraforaxes) node[left] {$y$};
+
+      % Optimal y
+      \draw[domain=1.5:5.5, smooth, variable=\x, blue] plot ({\x-.5}, {fopt(\x)});
+
+      % Perturbation
+      \draw[domain=1.5:5.5, smooth, variable=\x, densely dotted, thick] plot ({\x-.5}, {fprime(\x)});
+      \draw[domain=1.5:5.5, smooth, variable=\x, red] plot ({\x-.5}, {eta(\x)});
+
+      \node[
+      circle,
+      draw=black,
+      fill=white,
+      inner sep=0pt,
+      minimum size=5pt
+      ] (y0) at (1, 1.56875) {};
+
+      \node[
+      circle,
+      draw=black,
+      fill=white,
+      inner sep=0pt,
+      minimum size=5pt
+      ] (y1) at (5, 3.18126) {};
+
+      \node[above] at (3,.3) {$\color{red} \alpha \cdot \bm{\eta}(t)$};
+      \node[below right] at (4.25, 2.75) {$\color{blue} \bm{q}(t)$};
+      \node[above left] at (2.6,2.68) {$\bm{q'}(t)$};
+
+
+      \node[below,yshift=-4pt] (t0) at (1, 0) {$t_0$};
+      \node[below,yshift=-4pt] (t1) at (5, 0) {$t_1$};
+      \draw[dotted] (y0) -- (1,0);
+      \draw[dotted] (y1) -- (5,0);
+      \draw (1,.08) -- (1,-.08);
+      \draw (5,.08) -- (5,-.08);
+
+      \node[left,xshift=-4pt] (q0) at (0,\qs) {$\color{blue}\Qq(t_0)$};
+      \node[left,xshift=-4pt] (qf) at (0,\qf) {$\color{blue}\Qq(t_f)$};
+      \draw[dotted] (0,\qs) -- (y0);
+      \draw[dotted] (0,\qf) -- (y1);
+      \draw (-.08,\qs) -- (.08,\qs);
+      \draw (-.08,\qf) -- (.08,\qf);
+
+    \end{tikzpicture}
+    \caption{Add a small perturbation ${\color{red}\alpha \cdot \bm \eta(t)}$}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{For smaller $\color{red} \alpha$, $\bm{q'}(t)$ closer to
+  optimal:}
+  \begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[%
+      scale=2, %
+      declare function = {
+        fopt(\x) = -1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x);
+        eta(\x,\alpha) = \alpha*((.5+2*sin(2*\x-2) * exp(2-1 * \x)) * (\x - 5.5) * (\x - 1.5))^2;
+        fprime(\x,\alpha) = fopt(\x) + eta(\x,\alpha);
+      }
+      ]
+      \pgfmathsetmacro{\xmin}{-.2};
+      \pgfmathsetmacro{\ymin}{-.2};
+      \pgfmathsetmacro{\xmax}{6};
+      \pgfmathsetmacro{\ymax}{4};
+
+      \pgfmathsetmacro{\qs}{1.56875};
+      \pgfmathsetmacro{\qf}{3.18126};
+
+      \pgfmathsetmacro{\extraforaxes}{.2};
+
+      \pgfmathsetmacro{\epsilon}{.06};
+
+      % Optimal y
+      \draw[domain=1.5:5.5, smooth, variable=\x, blue, very thick] plot ({\x-.5}, {fopt(\x)});
+
+      % Perturbation
+      \foreach \alpha/\thecolor in {%
+        0.25/red,%
+        0.20/red!80!blue,%
+        0.15/red!60!blue,%
+        0.10/red!40!blue,%
+        0.05/red!20!blue%
+      }{
+        \draw[domain=1.5:5.5, smooth, variable=\x,\thecolor] plot ({\x-.5}, {fprime(\x,\alpha)});
+        \draw[domain=1.5:5.5, smooth, variable=\x,\thecolor] plot ({\x-.5}, {fprime(\x,-1*\alpha)});
+      }
+      \node[
+      circle,
+      draw=black,
+      fill=white,
+      inner sep=0pt,
+      minimum size=5pt
+      ] (y0) at (1, 1.56875) {};
+
+      \node[
+      circle,
+      draw=black,
+      fill=white,
+      inner sep=0pt,
+      minimum size=5pt
+      ] (y1) at (5, 3.18126) {};
+
+    \end{tikzpicture}
+    \caption{$\bm{q'}(t)$ for various values of $\color{red}\alpha$}
+  \end{figure}
+  \vfill
+\end{frame}
+
+\begin{frame}{Turn $C$ into optimizing a 1-D function:}
+  \begin{itemize}
+    \item Consider $C[\bm{q'}(t)]$ as a function of just $\color{red}
+      \alpha$:
+      \[
+        C'({\color{red}\alpha})
+        = C\bk{{\color{blue}\bm{q}(t)} + {\color{red}\alpha \cdot
+            \bm{\eta}(t)}}.
+      \]
+      This is just a map from $\RR\to \RR$!
+    \item Note that $C'({\color{red} 0}) = C[{\color{blue} \Qq(t)}]$,
+      so
+      \[
+        0 = \od{C'({\color{red} \alpha})}{\color{red}\alpha}
+        \bigg\vert_{{\color{red}\alpha} = 0}
+      \]
+    \item Repeated application of the chain rule and integration by
+      parts yields
+      \[
+        \boxed{\pd{\mc L}{\color{blue} \Qq} - \od{}{t}\pn{\pd{\mc
+              L}{\color{blue} \bm{\dot q}}} = 0}
+      \]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Solution: Euler-Lagrange}
+  \begin{theorem}[Euler-Lagrange]
+    Let $X$ be our space of interest, and let $\Xx_0$, $\Xx_1 \in X$.
+    Let $\Qq(t)$ be a path from $\Xx_0$ to $\Xx_1$. Then if $\Qq(t)$
+    minimizes the ``total cost function''
+    \[
+      C[\Qq(t)] = \int_{t_0}^{t_1} \mc L\pn{t, \Qq(t), \dot{\Qq}(t)} \dd
+      t,
+    \]
+    $\Qq(t)$ is a solution to the differential equation
+    \[
+      \pd{\mc L}{\Qq} - \od{}{t} \pn{\pd{\mc L}{\dot{\Qq}}} = 0.
+    \]
+  \end{theorem}
+\end{frame}
+
+\section{Some examples}
+
+\begin{frame}{Big idea: find best path}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[keepaspectratio,height=5cm]{figures/vector-field.pdf}
+    \caption{Drag field}
+    \label{fig:wind}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Big idea, cont:}
@@ -301,267 +563,7 @@
 
 % \section{Proof Sketch}
 
-\begin{frame}{Solution: Euler-Lagrange}
-  \begin{theorem}[Euler-Lagrange]
-    Let $X$ be our space of interest, and let $\Xx_0$, $\Xx_1 \in X$.
-    Let $\Qq(t)$ be a path from $\Xx_0$ to $\Xx_1$. Then if $\Qq(t)$
-    minimizes the ``total cost function''
-    \[
-      C[\Qq(t)] = \int_{t_0}^{t_1} \mc L\pn{t, \Qq(t), \dot{\Qq}(t)} \dd
-      t,
-    \]
-    $\Qq(t)$ is a solution to the differential equation
-    \[
-      \pd{\mc L}{\Qq} - \od{}{t} \pn{\pd{\mc L}{\dot{\Qq}}} = 0.
-    \]
-  \end{theorem}
-\end{frame}
-
-\section{Proof Sketch}
-\begin{frame}{Overview:}
-  \begin{enumerate}
-    \item Suppose an optimal $\color{blue} \Qq(t)$ exists.
-    \item Add some perturbation $\color{red} \alpha \cdot
-      \bm{\eta}(t)$ to get a non-optimal $\bm{q'}(t)$.
-    \item $C[\Qq'(t)]$ is minimized when $\color{red}\alpha = 0$.
-    \item Hence, differentiating in $\color{red} \alpha$, we can show
-      \[
-        \od{C}{{\color{red}\alpha}} \bigg\vert_{{\color{red}\alpha}=0}
-        = \int_{t_0}^{t_1} \bk{\pd{\mc L}{\color{blue} \Qq} -
-          \od{}{t}\pn{\pd{\mc L}{\color{blue} \bm{\dot q}}}}
-        {\color{red}\eta(t)} \dd t = 0
-      \]
-    \item It follows that
-      \[
-        \boxed{\pd{\mc L}{\color{blue} \Qq} - \od{}{t}\pn{\pd{\mc
-              L}{\color{blue} \bm{\dot q}}} = 0}
-      \]
-  \end{enumerate}
-\end{frame}
-\begin{frame}{Suppose an optimal $\color{blue}\Qq(t)$ exists:}
-  \begin{figure}[h]
-    \centering
-    \begin{tikzpicture}[scale=1.15,
-      declare function = {
-        epsilon(\x) = .06;
-        fopt(\x) = -1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x);
-        eta(\x) = epsilon(0)*((.5+2*sin(2*\x-2) * exp(2-1 * \x)) * (\x - 5.5) * (\x - 1.5))^2;
-        fprime(\x) = fopt(\x) + eta(\x);
-      }
-      ]
-      \pgfmathsetmacro{\xmin}{-.2};
-      \pgfmathsetmacro{\ymin}{-.2};
-      \pgfmathsetmacro{\xmax}{6};
-      \pgfmathsetmacro{\ymax}{4};
-
-      \pgfmathsetmacro{\qs}{1.56875};
-      \pgfmathsetmacro{\qf}{3.18126};
-
-      \pgfmathsetmacro{\extraforaxes}{.2};
-
-      \pgfmathsetmacro{\epsilon}{.06};
-
-      \draw[->] (\xmin,0) -- (\xmax+\extraforaxes, 0) node[below] {$x$};
-      \draw[->] (0,\ymin) -- (0, \ymax+\extraforaxes) node[left] {$y$};
-
-      % Optimal y
-      \draw[domain=1.5:5.5, smooth, variable=\x, blue] plot ({\x-.5}, {fopt(\x)});
-
-      \node[below right] at (4.25, 2.75) {$\color{blue} \bm{q}(t)$};
-
-      \node[
-      circle,
-      draw=black,
-      fill=white,
-      inner sep=0pt,
-      minimum size=5pt
-      ] (y0) at (1, 1.56875) {};
-
-      \node[
-      circle,
-      draw=black,
-      fill=white,
-      inner sep=0pt,
-      minimum size=5pt
-      ] (y1) at (5, 3.18126) {};
-
-      \node[below,yshift=-4pt] (t0) at (1, 0) {$t_0$};
-      \node[below,yshift=-4pt] (t1) at (5, 0) {$t_1$};
-      \draw[dotted] (y0) -- (1,0);
-      \draw[dotted] (y1) -- (5,0);
-      \draw (1,.08) -- (1,-.08);
-      \draw (5,.08) -- (5,-.08);
-
-      \node[left,xshift=-4pt] (q0) at (0,\qs) {$\color{blue}\Qq(t_0)$};
-      \node[left,xshift=-4pt] (qf) at (0,\qf) {$\color{blue}\Qq(t_f)$};
-      \draw[dotted] (0,\qs) -- (y0);
-      \draw[dotted] (0,\qf) -- (y1);
-      \draw (-.08,\qs) -- (.08,\qs);
-      \draw (-.08,\qf) -- (.08,\qf);
-    \end{tikzpicture}
-    \caption{Optimal $\color{blue} \Qq(t)$}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{For some $\color{red} \bm{\eta}(t)$, add $\color{red}\alpha \cdot \bm{\eta}(t)$:}
-  \begin{figure}[h]
-    \centering
-    \begin{tikzpicture}[scale=1.15,
-      declare function = {
-        epsilon(\x) = .06;
-        fopt(\x) = -1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x);
-        eta(\x) = epsilon(0)*((.5+2*sin(2*\x-2) * exp(2-1 * \x)) * (\x - 5.5) * (\x - 1.5))^2;
-        fprime(\x) = fopt(\x) + eta(\x);
-      }
-      ]
-      \pgfmathsetmacro{\xmin}{-.2};
-      \pgfmathsetmacro{\ymin}{-.2};
-      \pgfmathsetmacro{\xmax}{6};
-      \pgfmathsetmacro{\ymax}{4};
-
-      \pgfmathsetmacro{\qs}{1.56875};
-      \pgfmathsetmacro{\qf}{3.18126};
-
-      \pgfmathsetmacro{\extraforaxes}{.2};
-
-      \pgfmathsetmacro{\epsilon}{.06};
-
-      \draw[->] (\xmin,0) -- (\xmax+\extraforaxes, 0) node[below] {$x$};
-      \draw[->] (0,\ymin) -- (0, \ymax+\extraforaxes) node[left] {$y$};
-
-      % Optimal y
-      \draw[domain=1.5:5.5, smooth, variable=\x, blue] plot ({\x-.5}, {fopt(\x)});
-
-      % Perturbation
-      \draw[domain=1.5:5.5, smooth, variable=\x, densely dotted, thick] plot ({\x-.5}, {fprime(\x)});
-      \draw[domain=1.5:5.5, smooth, variable=\x, red] plot ({\x-.5}, {eta(\x)});
-
-      \node[
-      circle,
-      draw=black,
-      fill=white,
-      inner sep=0pt,
-      minimum size=5pt
-      ] (y0) at (1, 1.56875) {};
-
-      \node[
-      circle,
-      draw=black,
-      fill=white,
-      inner sep=0pt,
-      minimum size=5pt
-      ] (y1) at (5, 3.18126) {};
-
-      \node[above] at (3,.3) {$\color{red} \alpha \cdot \bm{\eta}(t)$};
-      \node[below right] at (4.25, 2.75) {$\color{blue} \bm{q}(t)$};
-      \node[above left] at (2.6,2.68) {$\bm{q'}(t)$};
-
-
-      \node[below,yshift=-4pt] (t0) at (1, 0) {$t_0$};
-      \node[below,yshift=-4pt] (t1) at (5, 0) {$t_1$};
-      \draw[dotted] (y0) -- (1,0);
-      \draw[dotted] (y1) -- (5,0);
-      \draw (1,.08) -- (1,-.08);
-      \draw (5,.08) -- (5,-.08);
-
-      \node[left,xshift=-4pt] (q0) at (0,\qs) {$\color{blue}\Qq(t_0)$};
-      \node[left,xshift=-4pt] (qf) at (0,\qf) {$\color{blue}\Qq(t_f)$};
-      \draw[dotted] (0,\qs) -- (y0);
-      \draw[dotted] (0,\qf) -- (y1);
-      \draw (-.08,\qs) -- (.08,\qs);
-      \draw (-.08,\qf) -- (.08,\qf);
-
-    \end{tikzpicture}
-    \caption{Add a small perturbation ${\color{red}\alpha \cdot \bm \eta(t)}$}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{For smaller $\color{red} \alpha$, $\bm{q'}(t)$ closer to
-  optimal:}
-  \begin{figure}[h]
-    \centering
-    \begin{tikzpicture}[%
-      scale=2, %
-      declare function = {
-        fopt(\x) = -1.7 + \x * (3.31667 + (-0.9 + 0.0833333 * \x) * \x);
-        eta(\x,\alpha) = \alpha*((.5+2*sin(2*\x-2) * exp(2-1 * \x)) * (\x - 5.5) * (\x - 1.5))^2;
-        fprime(\x,\alpha) = fopt(\x) + eta(\x,\alpha);
-      }
-      ]
-      \pgfmathsetmacro{\xmin}{-.2};
-      \pgfmathsetmacro{\ymin}{-.2};
-      \pgfmathsetmacro{\xmax}{6};
-      \pgfmathsetmacro{\ymax}{4};
-
-      \pgfmathsetmacro{\qs}{1.56875};
-      \pgfmathsetmacro{\qf}{3.18126};
-
-      \pgfmathsetmacro{\extraforaxes}{.2};
-
-      \pgfmathsetmacro{\epsilon}{.06};
-
-      % Optimal y
-      \draw[domain=1.5:5.5, smooth, variable=\x, blue, very thick] plot ({\x-.5}, {fopt(\x)});
-
-      % Perturbation
-      \foreach \alpha/\thecolor in {%
-        0.25/red,%
-        0.20/red!80!blue,%
-        0.15/red!60!blue,%
-        0.10/red!40!blue,%
-        0.05/red!20!blue%
-      }{
-        \draw[domain=1.5:5.5, smooth, variable=\x,\thecolor] plot ({\x-.5}, {fprime(\x,\alpha)});
-        \draw[domain=1.5:5.5, smooth, variable=\x,\thecolor] plot ({\x-.5}, {fprime(\x,-1*\alpha)});
-      }
-      \node[
-      circle,
-      draw=black,
-      fill=white,
-      inner sep=0pt,
-      minimum size=5pt
-      ] (y0) at (1, 1.56875) {};
-
-      \node[
-      circle,
-      draw=black,
-      fill=white,
-      inner sep=0pt,
-      minimum size=5pt
-      ] (y1) at (5, 3.18126) {};
-
-    \end{tikzpicture}
-    \caption{$\bm{q'}(t)$ for various values of $\color{red}\alpha$}
-  \end{figure}
-  \vfill
-\end{frame}
-
-\begin{frame}{Turn $C$ into optimizing a 1-D function:}
-  \begin{itemize}
-    \item Consider $C[\bm{q'}(t)]$ as a function of just $\color{red}
-      \alpha$:
-      \[
-        C'({\color{red}\alpha})
-        = C\bk{{\color{blue}\bm{q}(t)} + {\color{red}\alpha \cdot
-            \bm{\eta}(t)}}.
-      \]
-      This is just a map from $\RR\to \RR$!
-    \item Note that $C'({\color{red} 0}) = C[{\color{blue} \Qq(t)}]$,
-      so
-      \[
-        0 = \od{C'({\color{red} \alpha})}{\color{red}\alpha}
-        \bigg\vert_{{\color{red}\alpha} = 0}
-      \]
-    \item Repeated application of the chain rule and integration by
-      parts yields the desired result!
-  \end{itemize}
-\end{frame}
-
-
-
-\section{Other examples}
-
-\begin{frame}{Examples}
+\begin{frame}{Other Examples}
   \begin{itemize}
     \item Optimal control
     \item Geodeseics \& Minimal surfaces of revolution
